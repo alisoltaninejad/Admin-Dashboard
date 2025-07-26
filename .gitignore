@@ -1,0 +1,37 @@
+# لاگ‌ها و فایل‌های دیباگ
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# پوشه‌ها و فایل‌های وابستگی
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# فایل‌های ادیتور و IDE
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# فایل‌های محیطی (Environment)
+.env
+.env.*
+.env.local
+.env.development
+.env.production
+
+# کش و فایل‌های موقت
+.vite/
+.cache/
+.temp/
