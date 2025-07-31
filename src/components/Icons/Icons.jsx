@@ -10,6 +10,10 @@ import { CgProfile } from "react-icons/cg";
 import { IoSettingsOutline } from "react-icons/io5";
 import { PiWarningCircle } from "react-icons/pi";
 import { GiChessKing } from "react-icons/gi";
+import { RxDashboard } from "react-icons/rx";
+import { FiShoppingCart } from "react-icons/fi";
+import { HiOutlineDocumentDuplicate } from "react-icons/hi";
+import { IoDocumentTextOutline } from "react-icons/io5";
 
 /**
  * سیستم آیکون‌های متمرکز پروژه
@@ -26,11 +30,15 @@ const IconSystem = ({ name, size = "md", color = "primary", className = "" }) =>
     ring: PiBellRinging,
     userAvatar: FaRegUser,
     profile: CgProfile,
-    arrowDown_One: IoIosArrowDown,
+    chevronDown: IoIosArrowDown,
     signOut:GoSignOut,
     setting:IoSettingsOutline,
     warn:PiWarningCircle,
     king:GiChessKing,
+    dashboard:RxDashboard,
+    shoppingCart:FiShoppingCart,
+    pages:HiOutlineDocumentDuplicate,
+    document:IoDocumentTextOutline,
     
   };
 

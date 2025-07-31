@@ -1,4 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Aleo:ital,wght@0,100..900;1,100..900&family=Anton&family=Covered+By+Your+Grace&family=Lilita+One&family=Madimi+One&family=Moon+Dance&family=Playwrite+IT+Moderna:wght@100..400&family=Special+Gothic+Expanded+One&family=Vazirmatn:wght@100..900&display=swap');
 @import "tailwindcss";
+
 @theme {
   --color-brand-50: #f5f0ff;   /* بسیار روشن - برای پس‌زمینه */
   --color-brand-100: #e9ddff;  /* روشن - برای هایلایت */
@@ -11,4 +13,13 @@
   --color-brand-800: #4c10a3;  /* برای دکمه‌های اصلی */
   --color-brand-900: #3c0c82;  /* برای hover دکمه‌ها */
   --color-brand-950: #2a075e;  /* تاریک - برای فوتر و عناصر خاص */
+
+  --font-vazir:"Vazirmatn", "sans-serif"; 
+  --font-Aleo:"Aleo", "sans-serif"; 
+}
+html{
+  font-family: var(--font-vazir);
+}
+.activeMenuItem{
+  @apply text-brand-700  bg-brand-100
 }

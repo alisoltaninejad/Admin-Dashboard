@@ -59,7 +59,7 @@ export default function UserMenu() {
               <h4 className="flex items-center gap-1">
                 حساب کاربری
                 <Icon 
-                  name="arrowDown_One" 
+                  name="chevronDown" 
                   size="sm" 
                   className={`transition-transform ${showProfileMenu ? "rotate-180" : ""}`}
                 />
