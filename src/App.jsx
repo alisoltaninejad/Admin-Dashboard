@@ -1,11 +1,12 @@
-import { useState } from 'react'
-
+import { useState } from "react";
+import Navbar from './components/Navbar/Navbar'
+import Sidebar from './components/Sidebar/Sidebar'
 function App() {
-  return (
-    <>
-     <h2 className='text-red-700 text-3xl'>Hello Everybody!!</h2>
-    </>
-  )
+  return(
+   <>
+  <Sidebar></Sidebar>
+  <Navbar></Navbar>
+  </>)
 }
 
-export default App
+export default App;
