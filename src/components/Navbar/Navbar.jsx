@@ -25,7 +25,7 @@ export default function UserMenu() {
   };
 
   return (
-    <div className="w-4/5 h-[69px]  fixed end-0  border-b border-b-gray-200">
+    <div className="w-4/5 h-[69px]  fixed end-0  border-b border-b-gray-200 bg-white">
       <div className="flex justify-between items-center">
         {/* بخش سمت راست */}
         <SearchBox />
