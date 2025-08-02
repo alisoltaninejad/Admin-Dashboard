@@ -14,6 +14,8 @@ import { RxDashboard } from "react-icons/rx";
 import { FiShoppingCart } from "react-icons/fi";
 import { HiOutlineDocumentDuplicate } from "react-icons/hi";
 import { IoDocumentTextOutline } from "react-icons/io5";
+import { FaArrowUp } from "react-icons/fa";
+import { FaArrowDown } from "react-icons/fa";
 
 /**
  * سیستم آیکون‌های متمرکز پروژه
@@ -39,6 +41,8 @@ const IconSystem = ({ name, size = "md", color = "primary", className = "" }) =>
     shoppingCart:FiShoppingCart,
     pages:HiOutlineDocumentDuplicate,
     document:IoDocumentTextOutline,
+    arrowUp:FaArrowUp,
+    arrowDown:FaArrowDown,
     
   };
 
@@ -53,6 +57,7 @@ const IconSystem = ({ name, size = "md", color = "primary", className = "" }) =>
     secondary: "text-gray-500 dark:text-gray-400",
     accent: "text-blue-600 dark:text-blue-400",
     danger: "text-red-500 dark:text-red-400",
+    success: "text-green-500 dark:text-green-400",
     dark: "dark:text-black text-white",
   };
 
