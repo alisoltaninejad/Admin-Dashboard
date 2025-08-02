@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Icon from "./../Icons/Icons";
-
+import SubmenuItem from "./sidebarSubmenus";
+import MenuItem from "./sidebarMenu";
+import SidebarHeader from "./SidebarHeader";
 export default function Sidebar() {
   const [openMenus, setOpenMenus] = useState({
     users: false,
@@ -14,15 +16,12 @@ export default function Sidebar() {
     }));
   };
   return (
-    <div className="w-1/5 fixed top-0 bottom-0 shadow bg-white">
+    <div className="flex flex-col  w-1/5 h-screen fixed top-0 bottom-0 shadow bg-white">
       {/* هدر سایدبار */}
-      <div className="flex w-full h-[80px] p-4 text-2xl items-baseline justify-center text-gray-800 bg-brand-300 shadow shadow-brand-950 z-50">
-        <span className="self-end  font-Aleo">AliSoliNejad</span>
-        <Icon name="king" size="lg" className="w-[50px] h-[50px]" />
-      </div>
+      <SidebarHeader />
 
       {/* منوی اصلی */}
-      <nav className="p-4 pb-4 space-y-2 overflow-y-auto h-[calc(100vh-80px)] [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+      <nav className="flex flex-col grow p-4 space-y-2 overflow-y-auto  [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
         {" "}
         {/* آیتم اصلی - دشبورد */}
         <a
@@ -53,21 +52,9 @@ export default function Sidebar() {
             className={`mt-1 pl-8 space-y-1 delay-100 ${
               openMenus.users ? "block" : "hidden"
             }`}>
-            <a
-              href="#"
-              className="block px-3 py-2 text-sm text-gray-600 hover:bg-brand-50 rounded transition-colors">
-              لیست کاربران
-            </a>
-            <a
-              href="#"
-              className="block px-3 py-2 text-sm text-gray-600 hover:bg-brand-50 rounded transition-colors">
-              نقش‌های کاربری
-            </a>
-            <a
-              href="#"
-              className="block px-3 py-2 text-sm text-gray-600 hover:bg-brand-50 rounded transition-colors">
-              مجوزهای دسترسی
-            </a>
+            <SubmenuItem txt=" لیست کاربران" />
+            <SubmenuItem txt="افزودن کاربر جدید" />
+            <SubmenuItem txt="مجوزهای دسترسی" />
           </div>
         </div>
         {/* آیتم قابل گسترش - مدیریت محصولات */}
@@ -91,21 +78,9 @@ export default function Sidebar() {
             className={`mt-1 pl-8 space-y-1 delay-100 ${
               openMenus.products ? "block" : "hidden"
             }`}>
-            <a
-              href="#"
-              className="block px-3 py-2 text-sm text-gray-600 hover:bg-brand-50 rounded transition-colors">
-              همه محصولات
-            </a>
-            <a
-              href="#"
-              className="block px-3 py-2 text-sm text-gray-600 hover:bg-brand-50 rounded transition-colors">
-              دسته‌بندی‌ها
-            </a>
-            <a
-              href="#"
-              className="block px-3 py-2 text-sm text-gray-600 hover:bg-brand-50 rounded transition-colors">
-              موجودی انبار
-            </a>
+            <SubmenuItem txt="همه محصولات" />
+            <SubmenuItem txt="دسته‌بندی‌ها" />
+            <SubmenuItem txt="موجودی انبار" />
           </div>
         </div>
         {/* بخش مدیریت محتوا */}
@@ -127,7 +102,7 @@ export default function Sidebar() {
               className="flex items-center px-4 py-2 text-gray-700 hover:bg-brand-50 rounded-lg transition-colors">
               <Icon name="document" className="w-5 h-5 me-1" />
               <span>وبلاگ</span>
-              <span className="ml-auto bg-brand-100 text-brand-800 text-xs px-2 py-0.5 rounded-full">
+              <span className="ml-auto bg-brand-100 text-brand-800 text-xs mx-1 px-1 py-0.5 rounded-full">
                 جدید
               </span>
             </a>
@@ -147,6 +122,9 @@ export default function Sidebar() {
               <span>تنظیمات سیستم</span>
             </a>
           </div>
+        </div>
+        <div className="align-bottom mt-auto pt-4 text-center text-xs text-gray-400">
+            Made by Ali Soltani
         </div>
       </nav>
     </div>
