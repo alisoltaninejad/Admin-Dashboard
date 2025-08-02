@@ -30,7 +30,7 @@ export const mainMenuItems = [
 
 export const contentManagementItems = [
   { id: "pages", title: "صفحات", icon: "pages", path: "/Pages" },
-  { id: "blog", title: "وبلاگ", icon: "document", path: "/Blogs" }
+  { id: "blog", title: "وبلاگ", icon: "document", path: "/Blogs",badge: "new" }
 ];
 
 export const settingsItems = [
