@@ -32,8 +32,8 @@ export default function UserMenu() {
 
         {/* بخش سمت چپ */}
         <div className="flex gap-3 p-3">
-          <ControlButtons icoName="moon" />
-          <ControlButtons icoName="ring" badge='1'/>
+          <ControlButtons name='theme' icoName="moon" />
+          <ControlButtons name='notification' icoName="ring" badge='1'/>
           {/* منوی کاربر */}
           <div className="relative" ref={menuRef}>
             <button
