@@ -26,9 +26,9 @@ export default function FinancialFeature({ lable, price, percentage }) {
           <span className="flex  place-items-start">
             <span> % </span>{formatPercentage(absolutePercentage)}
             {isPositive ? (
-              <Icon name="arrowUp" size={16} className="mr-1" color='success'/>
+              <Icon name="arrowUp" size='sm' className="mr-1" color='success'/>
             ) : (
-              <Icon name="arrowDown" size={16} className="mr-1" color='danger'/>
+              <Icon name="arrowDown" size='sm' className="mr-1" color='danger'/>
             )}
           </span>
         </div>
