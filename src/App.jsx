@@ -9,7 +9,7 @@ function App() {
    <>
   <Sidebar></Sidebar>
   <Navbar></Navbar>
-    <div className="w-4/5 float-left mt-[60px] p-6">
+    <div className="w-4/5 float-left mt-[60px] p-10">
        {router}
     </div>
   </>)

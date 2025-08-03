@@ -16,6 +16,7 @@ import { HiOutlineDocumentDuplicate } from "react-icons/hi";
 import { IoDocumentTextOutline } from "react-icons/io5";
 import { FaArrowUp } from "react-icons/fa";
 import { FaArrowDown } from "react-icons/fa";
+import { FaEye } from "react-icons/fa";
 
 /**
  * سیستم آیکون‌های متمرکز پروژه
@@ -43,6 +44,7 @@ const IconSystem = ({ name, size = "md", color = "primary", className = "" }) =>
     document:IoDocumentTextOutline,
     arrowUp:FaArrowUp,
     arrowDown:FaArrowDown,
+    eye:FaEye,
     
   };
 

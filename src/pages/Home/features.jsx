@@ -23,7 +23,7 @@ export default function FinancialFeature({ lable, price, percentage }) {
         </h5>
         
         <div className={`flex items-center gap-2 mt-1 ${percentageColor}`}>
-          <span className="flex items-center">
+          <span className="flex  place-items-start">
             <span> % </span>{formatPercentage(absolutePercentage)}
             {isPositive ? (
               <Icon name="arrowUp" size={16} className="mr-1" color='success'/>
