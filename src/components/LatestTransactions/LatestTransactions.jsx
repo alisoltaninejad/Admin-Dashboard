@@ -6,6 +6,17 @@ import { toGregorian } from "jalaali-js";
 const toEnglishDigits = (str) =>
   str.replace(/[۰-۹]/g, (d) => "۰۱۲۳۴۵۶۷۸۹".indexOf(d));
 
+// تبدیل ارقام انگلیسی به فارسی
+const toPersianDigits = (num) => {
+  const persianDigits = '۰۱۲۳۴۵۶۷۸۹';
+  return num.toString().replace(/\d/g, (d) => persianDigits[d]);
+};
+
+// فرمت کردن مبلغ به صورت زیبا با جداکننده هزارگان
+const formatAmount = (amount) => {
+  return toPersianDigits(new Intl.NumberFormat('fa-IR').format(amount));
+};
+
 export default function LatestTransactions() {
   // تبدیل تاریخ شمسی (فارسی) به تاریخ میلادی قابل مقایسه
   const parsePersianDate = (persianDate) => {
@@ -53,6 +64,19 @@ export default function LatestTransactions() {
     }
   };
 
+  const getStatusText = (status) => {
+    switch (status) {
+      case "approved":
+        return "تایید شده";
+      case "pending":
+        return "در انتظار";
+      case "declined":
+        return "رد شده";
+      default:
+        return "نامشخص";
+    }
+  };
+
   return (
     <div className="w-4/6 shadow p-4 rounded-lg bg-white">
       <h2 className="text-xl mb-6 font-bold text-gray-800">تراکنش‌های اخیر</h2>
@@ -69,23 +93,21 @@ export default function LatestTransactions() {
           <tbody>
             {latestTransactions.map((item) => (
               <tr
-                key={item.id}
+                key={item.transaction.id}
                 className="border-b border-gray-100 hover:bg-gray-50"
               >
                 <td className="py-3 px-4 text-center">{item.userName}</td>
                 <td className="py-3 px-4 text-center">{item.transaction.date}</td>
                 <td className="py-3 px-4 text-center">
-                  {item.transaction.amount} تومان
+                  {formatAmount(item.transaction.amount)} تومان
                 </td>
-                <td className="py-3 px-4">
+                <td className="py-3 px-4 text-center">
                   <span
                     className={`px-2 py-1 rounded-full text-xs ${getStatusStyle(
                       item.transaction.status
                     )}`}
                   >
-                    {item.transaction.status === "approved" && "تایید شده"}
-                    {item.transaction.status === "pending" && "در انتظار"}
-                    {item.transaction.status === "declined" && "رد شده"}
+                    {getStatusText(item.transaction.status)}
                   </span>
                 </td>
               </tr>
