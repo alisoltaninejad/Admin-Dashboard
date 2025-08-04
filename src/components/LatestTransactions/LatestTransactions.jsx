@@ -34,7 +34,7 @@ export default function LatestTransactions() {
           parsePersianDate(b.transaction.date) -
           parsePersianDate(a.transaction.date)
       )
-      .slice(0, 4);
+      .slice(0, 5);
   };
 
   const allUsers = usersModule.getAllUsers();
@@ -67,9 +67,9 @@ export default function LatestTransactions() {
             </tr>
           </thead>
           <tbody>
-            {latestTransactions.map((item, index) => (
+            {latestTransactions.map((item) => (
               <tr
-                key={index}
+                key={item.id}
                 className="border-b border-gray-100 hover:bg-gray-50"
               >
                 <td className="py-3 px-4 text-center">{item.userName}</td>
