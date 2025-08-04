@@ -1,31 +1,8 @@
 import React from "react";
 import usersModule from "../../components/UsersModule/UsersModule";
-import { toGregorian } from "jalaali-js";
-
-// تبدیل ارقام فارسی به انگلیسی
-const toEnglishDigits = (str) =>
-  str.replace(/[۰-۹]/g, (d) => "۰۱۲۳۴۵۶۷۸۹".indexOf(d));
-
-// تبدیل ارقام انگلیسی به فارسی
-const toPersianDigits = (num) => {
-  const persianDigits = '۰۱۲۳۴۵۶۷۸۹';
-  return num.toString().replace(/\d/g, (d) => persianDigits[d]);
-};
-
-// فرمت کردن مبلغ به صورت زیبا با جداکننده هزارگان
-const formatAmount = (amount) => {
-  return toPersianDigits(new Intl.NumberFormat('fa-IR').format(amount));
-};
-
+import Utilities from './../Utilities/Utilities'
 export default function LatestTransactions() {
-  // تبدیل تاریخ شمسی (فارسی) به تاریخ میلادی قابل مقایسه
-  const parsePersianDate = (persianDate) => {
-    const englishDate = toEnglishDigits(persianDate);
-    const [year, month, day] = englishDate.split("/").map(Number);
-    const g = toGregorian(year, month, day);
-    return new Date(g.gy, g.gm - 1, g.gd);
-  };
-
+ 
   const getLatestTransactions = (users) => {
     const allTransactions = [];
 
@@ -42,8 +19,8 @@ export default function LatestTransactions() {
     return allTransactions
       .sort(
         (a, b) =>
-          parsePersianDate(b.transaction.date) -
-          parsePersianDate(a.transaction.date)
+          Utilities.parsePersianDate(b.transaction.date) -
+          Utilities.parsePersianDate(a.transaction.date)
       )
       .slice(0, 5);
   };
@@ -99,7 +76,7 @@ export default function LatestTransactions() {
                 <td className="py-3 px-4 text-center">{item.userName}</td>
                 <td className="py-3 px-4 text-center">{item.transaction.date}</td>
                 <td className="py-3 px-4 text-center">
-                  {formatAmount(item.transaction.amount)} تومان
+                  {Utilities.formatAmount(item.transaction.amount)} تومان
                 </td>
                 <td className="py-3 px-4 text-center">
                   <span
