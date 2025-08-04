@@ -2,24 +2,50 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-50: #f5f0ff;   /* بسیار روشن - برای پس‌زمینه */
-  --color-brand-100: #e9ddff;  /* روشن - برای هایلایت */
-  --color-brand-200: #d5bfff;  /* برای hover状态 */
-  --color-brand-300: #b794ff;  /* برای borderها */
-  --color-brand-400: #9965ff;  /* آکسان‌های متوسط */
-  --color-brand-500: #7c3aed;  /* رنگ اصلی برند (بنفش اصلی) */
-  --color-brand-600: #6b21d8;  /* برای متن‌های مهم */
-  --color-brand-700: #5b16c2;  /* برای عنوان‌ها */
-  --color-brand-800: #4c10a3;  /* برای دکمه‌های اصلی */
-  --color-brand-900: #3c0c82;  /* برای hover دکمه‌ها */
-  --color-brand-950: #2a075e;  /* تاریک - برای فوتر و عناصر خاص */
+  --color-brand-50: #f5f0ff;
+  /* بسیار روشن - برای پس‌زمینه */
+  --color-brand-100: #e9ddff;
+  /* روشن - برای هایلایت */
+  --color-brand-200: #d5bfff;
+  /* برای hover状态 */
+  --color-brand-300: #b794ff;
+  /* برای borderها */
+  --color-brand-400: #9965ff;
+  /* آکسان‌های متوسط */
+  --color-brand-500: #7c3aed;
+  /* رنگ اصلی برند (بنفش اصلی) */
+  --color-brand-600: #6b21d8;
+  /* برای متن‌های مهم */
+  --color-brand-700: #5b16c2;
+  /* برای عنوان‌ها */
+  --color-brand-800: #4c10a3;
+  /* برای دکمه‌های اصلی */
+  --color-brand-900: #3c0c82;
+  /* برای hover دکمه‌ها */
+  --color-brand-950: #2a075e;
+  /* تاریک - برای فوتر و عناصر خاص */
 
-  --font-vazir:"Vazirmatn", "sans-serif"; 
-  --font-Aleo:"Aleo", "sans-serif"; 
+  --font-vazir: "Vazirmatn", "sans-serif";
+  --font-Aleo: "Aleo", "sans-serif";
+
+  --animate-slideDown: {
+    '0%': {
+      transform: 'translateY(-100%)'
+    }
+
+    ,
+    '100%': {
+      transform: 'translateY(0)'
+    }
+
+    ,
+  }
 }
-html{
+
+html {
   font-family: var(--font-vazir);
 }
-.activeMenuItem{
-  @apply text-brand-700  bg-brand-100
+
+.activeMenuItem {
+  @apply text-brand-700 bg-brand-100
 }

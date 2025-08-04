@@ -70,7 +70,7 @@ const users = [
     job: "توسعه‌دهنده فرانت‌اند",
     transactions: [
       { id: 10, date: toPersianDate(new Date(2025, 6, 31)), amount: 2300000, status: 'approved' },
-      { id: 11, date: toPersianDate(new Date(2025, 7, 15)), amount: 1750000, status: 'pending' },
+      { id: 11, date: toPersianDate(new Date(2025, 7, 15)), amount: 1750000, status: 'declined' },
       { id: 12, date: toPersianDate(new Date(2025, 9, 3)), amount: 3100000, status: 'approved' }
     ],
     userStatus: 'active',
