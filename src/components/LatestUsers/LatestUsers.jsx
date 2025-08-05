@@ -21,7 +21,7 @@ export default function LatestUsers() {
 
   return (
     <div className="w-2/6 shadow p-4 rounded-lg bg-white">
-      <h2 className="text-xl mb-3 font-bold text-gray-800">
+      <h2 className="text-xl mb-6 font-bold text-gray-800">
         کاربران تازه ورود
       </h2>
       <div className="my-auto">
