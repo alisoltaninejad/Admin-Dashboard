@@ -1,13 +1,37 @@
-import React from "react";
-import usersModule from "../../components/UsersModule/UsersModule";
-import Utilities from './../Utilities/Utilities'
+import React, { useState, useEffect } from "react";
+import userService from "../dbModules/userSerivices";
+import Utilities from '../Utilities/Utilities';
+
 export default function LatestTransactions() {
- 
-  const getLatestTransactions = (users) => {
+  const [latestTransactions, setLatestTransactions] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchTransactions = async () => {
+      try {
+        const result = await userService.getAllUsers();
+        if (result.success) {
+          const transactions = processTransactions(result.data);
+          setLatestTransactions(transactions);
+        } else {
+          setError(result.error);
+        }
+      } catch (err) {
+        setError("خطا در دریافت تراکنش‌ها");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchTransactions();
+  }, []);
+
+  const processTransactions = (users) => {
     const allTransactions = [];
 
     users.forEach((user) => {
-      user.transactions.forEach((transaction) => {
+      user.transactions?.forEach((transaction) => {
         allTransactions.push({
           userId: user.id,
           userName: user.name,
@@ -24,9 +48,6 @@ export default function LatestTransactions() {
       )
       .slice(0, 5);
   };
-
-  const allUsers = usersModule.getAllUsers();
-  const latestTransactions = getLatestTransactions(allUsers);
 
   const getStatusStyle = (status) => {
     switch (status) {
@@ -54,6 +75,24 @@ export default function LatestTransactions() {
     }
   };
 
+  if (loading) {
+    return (
+      <div className="w-4/6 shadow p-4 rounded-lg bg-white">
+        <div className="flex justify-center items-center h-32">
+          <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-blue-500"></div>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="w-4/6 shadow p-4 rounded-lg bg-white">
+        <div className="text-center text-red-500 py-4">{error}</div>
+      </div>
+    );
+  }
+
   return (
     <div className="w-4/6 shadow p-4 rounded-lg bg-white">
       <h2 className="text-xl mb-6 font-bold text-gray-800">تراکنش‌های اخیر</h2>
@@ -70,7 +109,7 @@ export default function LatestTransactions() {
           <tbody>
             {latestTransactions.map((item) => (
               <tr
-                key={item.transaction.id}
+                key={`${item.userId}-${item.transaction.id}`}
                 className="border-b border-gray-100 hover:bg-gray-50"
               >
                 <td className="py-3 px-4 text-center">{item.userName}</td>

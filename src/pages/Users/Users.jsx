@@ -1,19 +1,34 @@
 import React, { useState, useEffect } from 'react';
-import usersModule from '../../components/UsersModule/UsersModule';
+import userService from '../../components/dbModules/userSerivices';
 
 export default function Users() {
   const [users, setUsers] = useState([]);
   const [editingUser, setEditingUser] = useState(null);
   const [editField, setEditField] = useState('');
   const [editValue, setEditValue] = useState('');
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   // بارگذاری اولیه کاربران
   useEffect(() => {
     loadUsers();
   }, []);
 
-  const loadUsers = () => {
-    setUsers(usersModule.getAllUsers());
+  const loadUsers = async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const result = await userService.getAllUsers();
+      if (result.success) {
+        setUsers(result.data);
+      } else {
+        setError(result.error);
+      }
+    } catch (err) {
+      setError('خطا در دریافت اطلاعات کاربران');
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleEditClick = (userId, field, currentValue) => {
@@ -22,12 +37,20 @@ export default function Users() {
     setEditValue(currentValue);
   };
 
-  const handleSaveEdit = (userId) => {
-    usersModule.updateUser(userId, editField, editValue);
-    loadUsers(); // بارگذاری مجدد کاربران پس از ویرایش
-    setEditingUser(null);
-    setEditField('');
-    setEditValue('');
+  const handleSaveEdit = async (userId) => {
+    try {
+      const result = await userService.updateUser(userId, editField, editValue);
+      if (result.success) {
+        await loadUsers();
+        setEditingUser(null);
+        setEditField('');
+        setEditValue('');
+      } else {
+        setError(result.error);
+      }
+    } catch (err) {
+      setError('خطا در به‌روزرسانی کاربر');
+    }
   };
 
   const handleCancelEdit = () => {
@@ -36,22 +59,65 @@ export default function Users() {
     setEditValue('');
   };
 
-  const handleDeleteUser = (userId) => {
+  const handleDeleteUser = async (userId) => {
     if (window.confirm('آیا از حذف این کاربر مطمئن هستید؟')) {
-      usersModule.deleteUser(userId);
-      setUsers(prevUsers => prevUsers.filter(user => user.id !== userId));
+      try {
+        const result = await userService.deleteUser(userId);
+        if (result) {
+          setUsers(prevUsers => prevUsers.filter(user => user.id !== userId));
+        } else {
+          setError('خطا در حذف کاربر');
+        }
+      } catch (err) {
+        setError('خطا در حذف کاربر');
+      }
     }
   };
 
   const calculateTotalTransactions = (transactions) => {
     return transactions
-      .reduce((total, transaction) => total + (transaction.amount || 0), 0)
+      .reduce((total, transaction) => {
+        const amount = typeof transaction.amount === 'string' 
+          ? parseInt(transaction.amount.replace(/,/g, '')) 
+          : transaction.amount || 0;
+        return total + amount;
+      }, 0)
       .toLocaleString('fa-IR');
   };
 
   const formatTransactionCount = (count) => {
     return count.toLocaleString('fa-IR');
   };
+
+  if (loading) {
+    return (
+      <div className="container mx-auto px-4 py-8">
+        <div className="flex justify-center items-center h-64">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-blue-500"></div>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="container mx-auto px-4 py-8">
+        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+          <strong className="font-bold">خطا! </strong>
+          <span className="block sm:inline">{error}</span>
+          <button 
+            onClick={loadUsers}
+            className="absolute top-0 bottom-0 right-0 px-4 py-3"
+          >
+            <svg className="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+              <title>تلاش مجدد</title>
+              <path d="M14.66 15.66A8 8 0 1 1 17 10h-2a6 6 0 1 0-1.76 4.24l1.42 1.42zM12 10h8l-4 4-4-4z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -154,12 +220,12 @@ export default function Users() {
                 
                 {/* تعداد تراکنش‌ها */}
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  {formatTransactionCount(user.transactions.length)}
+                  {formatTransactionCount(user.transactions?.length || 0)}
                 </td>
                 
                 {/* جمع تراکنش‌ها */}
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  {calculateTotalTransactions(user.transactions)}
+                  {calculateTotalTransactions(user.transactions || [])} تومان
                 </td>
                 
                 {/* عملیات */}

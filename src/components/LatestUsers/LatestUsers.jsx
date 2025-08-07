@@ -1,23 +1,61 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Icon from "../Icons/Icons";
-import usersModule from "../../components/UsersModule/UsersModule";
+import userService from "../dbModules/userSerivices"; 
 import Modal from "../Modal/Modal";
 
 export default function LatestUsers() {
   const [userId, setUserId] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [latestUsers, setLatestUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  // دریافت 5 کاربر آخر از ماژول
-  const latestUsers = usersModule
-    .getAllUsers()
-    .sort((a, b) => b.id - a.id)
-    .slice(0, 4);
+  // دریافت کاربران به صورت ناهمگام
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const result = await userService.getAllUsers();
+        if (result.success) {
+          const sortedUsers = result.data
+            .sort((a, b) => b.id - a.id)
+            .slice(0, 4);
+          setLatestUsers(sortedUsers);
+        } else {
+          setError(result.error);
+        }
+      } catch (err) {
+        setError("خطا در دریافت داده‌ها");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchUsers();
+  }, []);
 
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
   };
 
   const selectedUser = latestUsers.find((user) => user.id === userId);
+
+  if (loading) {
+    return (
+      <div className="w-2/6 shadow p-4 rounded-lg bg-white">
+        <div className="flex justify-center items-center h-32">
+          <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-blue-500"></div>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="w-2/6 shadow p-4 rounded-lg bg-white">
+        <div className="text-center text-red-500 py-4">{error}</div>
+      </div>
+    );
+  }
 
   return (
     <div className="w-2/6 shadow p-4 rounded-lg bg-white">
@@ -100,7 +138,6 @@ export default function LatestUsers() {
                 <p>تلفن: {selectedUser.phone || "ثبت نشده"}</p>
                 <p>تاریخ ثبت نام: {selectedUser.joinDate || "ثبت نشده"}</p>
                 <p>سمت: {selectedUser.job || "ثبت نشده"}</p>
-               
               </div>
               <button
                 onClick={toggleModal}
