@@ -17,6 +17,8 @@ import { IoDocumentTextOutline } from "react-icons/io5";
 import { FaArrowUp } from "react-icons/fa";
 import { FaArrowDown } from "react-icons/fa";
 import { FaEye } from "react-icons/fa";
+import { TiEdit } from "react-icons/ti";
+import { LuUpload } from "react-icons/lu";
 
 /**
  * سیستم آیکون‌های متمرکز پروژه
@@ -45,6 +47,8 @@ const IconSystem = ({ name, size = "md", color = "primary", className = "" }) =>
     arrowUp:FaArrowUp,
     arrowDown:FaArrowDown,
     eye:FaEye,
+    edit:TiEdit,
+    upload:LuUpload,
     
   };
 
@@ -61,6 +65,7 @@ const IconSystem = ({ name, size = "md", color = "primary", className = "" }) =>
     danger: "text-red-500 dark:text-red-400",
     success: "text-green-500 dark:text-green-400",
     dark: "dark:text-black text-white",
+    brand: "dark:text-brand-950 text-brand-200",
   };
 
   const IconComponent = icons[name];
