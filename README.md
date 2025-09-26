@@ -1,7 +1,7 @@
 <!-- Dashboard Project -->
 # 📊 Admin Shop Dashboard (React, Tailwind CSS)
 
-A **Single Page Application (SPA)** admin dashboard built with **React** and **Tailwind CSS**. This responsive and modern control panel allows administrators to manage users, products, categories, inventory, and system settings — all in one place. It also provides statistical insights with charts and supports local data storage for faster operations.
+A **Single Page Application (SPA)** admin dashboard built with `React` and `Tailwind CSS`. This responsive and modern control panel allows administrators to manage users, products, categories, inventory, and system settings — all in one place. It also provides statistical insights with charts and supports local data storage for faster operations.
 
 ## ✨ Features
 
