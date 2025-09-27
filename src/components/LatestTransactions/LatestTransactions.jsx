@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import userService from "../dbModules/userSerivices";
+import userService from "../dbModules/userServices";
 import Utilities from '../Utilities/Utilities';
 
 export default function LatestTransactions() {

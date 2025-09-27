@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import userService from '../../components/dbModules/userSerivices';
+import userService from '../../components/dbModules/userServices';
 
 export default function Users() {
   const [users, setUsers] = useState([]);
