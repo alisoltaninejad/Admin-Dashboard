@@ -27,7 +27,14 @@
 
   --font-vazir: "Vazirmatn", "sans-serif";
   --font-Aleo: "Aleo", "sans-serif";
-
+  --font-anton: "Anton", sans-serif;
+  --font-covered-by-your-grace: "Covered By Your Grace", cursive;
+  --font-lilita-one: "Lilita One", sans-serif;
+  --font-madimi-one: "Madimi One", sans-serif;
+  --font-moon-dance: "Moon Dance", cursive;
+  --font-playwrite-it-moderna: "Playwrite IT Moderna", cursive;
+  --font-special-gothic-expanded-one: "Special Gothic Expanded One", sans-serif;
+   
   --animate-slideDown: {
     '0%': {
       transform: 'translateY(-100%)'
