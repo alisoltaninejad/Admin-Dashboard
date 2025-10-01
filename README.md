@@ -13,3 +13,15 @@ A **Single Page Application (SPA)** admin dashboard built with `React` and `Tail
 - ⚙️ **System settings**: configure global panel preferences  
 - 🔑 **Account settings**: update personal account details  
 - 💾 **IndexedDB support** for local data storage and fast access
+
+---
+## 💻 Installation:
+>#### Clone the project with:
+```
+git clone https://github.com/alisoltaninejad/Admin-Dashboard
+```
+> run this commands:
+```
+npm i
+npm run dev
+```
