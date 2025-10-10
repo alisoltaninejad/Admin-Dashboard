@@ -14,7 +14,7 @@ export default function Home() {
 
       <Chart />
 
-     <div className="flex gap-4 mt-6">
+     <div className="flex flex-col lg:flex-row  gap-4 mt-6">
        <LatestUsers />
       <LatestTransactions />
      </div>

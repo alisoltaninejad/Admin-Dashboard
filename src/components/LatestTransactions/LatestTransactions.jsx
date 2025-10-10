@@ -77,7 +77,7 @@ export default function LatestTransactions() {
 
   if (loading) {
     return (
-      <div className="w-4/6 shadow p-4 rounded-lg bg-white">
+      <div className="w-full lg:w-4/6  shadow p-4 rounded-lg bg-white">
         <div className="flex justify-center items-center h-32">
           <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-blue-500"></div>
         </div>
@@ -87,14 +87,14 @@ export default function LatestTransactions() {
 
   if (error) {
     return (
-      <div className="w-4/6 shadow p-4 rounded-lg bg-white">
+      <div className="w-full lg:w-4/6  shadow p-4 rounded-lg bg-white">
         <div className="text-center text-red-500 py-4">{error}</div>
       </div>
     );
   }
 
   return (
-    <div className="w-4/6 shadow p-4 rounded-lg bg-white">
+    <div className="w-full lg:w-4/6 shadow p-4 rounded-lg bg-white">
       <h2 className="text-xl mb-6 font-bold text-gray-800">تراکنش‌های اخیر</h2>
       {latestTransactions.length > 0 ? (
         <table className="w-full text-center">
@@ -110,7 +110,7 @@ export default function LatestTransactions() {
             {latestTransactions.map((item) => (
               <tr
                 key={`${item.userId}-${item.transaction.id}`}
-                className="border-b border-gray-100 hover:bg-gray-50"
+                className="border-b border-gray-100 hover:bg-gray-50 text-[10px] sm:text-xs md:text-sm"
               >
                 <td className="py-3 px-4 text-center">{item.userName}</td>
                 <td className="py-3 px-4 text-center">{item.transaction.date}</td>

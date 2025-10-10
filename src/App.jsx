@@ -66,7 +66,7 @@ function App() {
     <>
       <Sidebar />
       <Navbar />
-      <div className="w-4/5 float-left mt-[60px] p-10">{router}</div>
+      <div className=" w-full xl:w-4/5 float-left mt-[60px] p-10">{router}</div>
     </>
   );
 }

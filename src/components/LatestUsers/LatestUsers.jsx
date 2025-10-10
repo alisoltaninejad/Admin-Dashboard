@@ -41,7 +41,7 @@ export default function LatestUsers() {
 
   if (loading) {
     return (
-      <div className="w-2/6 shadow p-4 rounded-lg bg-white">
+      <div className=" w-2/6 shadow p-4 rounded-lg bg-white">
         <div className="flex justify-center items-center h-32">
           <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-blue-500"></div>
         </div>
@@ -58,7 +58,7 @@ export default function LatestUsers() {
   }
 
   return (
-    <div className="w-2/6 shadow p-4 rounded-lg bg-white">
+    <div className="w-full lg:w-2/6 shadow p-4 rounded-lg bg-white">
       <h2 className="text-xl mb-6 font-bold text-gray-800">
         کاربران تازه ورود
       </h2>
@@ -86,11 +86,11 @@ export default function LatestUsers() {
 
               {/* اطلاعات کاربر */}
               <div className="flex-1 px-4 text-right">
-                <h3 className="font-medium text-gray-700">{user.name}</h3>
-                <h6 className="text-gray-400 text-xs mt-1">
+                <h3 className="font-medium text-gray-700 text-xs lg:text-sm">{user.name}</h3>
+                <h6 className="text-gray-400 text-[10px] lg:text-xs mt-1">
                   {user.job} •{" "}
                   <span
-                    className={`inline-block w-2 h-2 rounded-full me-1 ${
+                    className={`inline-block w-2 h-2 text-[6px] lg:text-[10px] rounded-full me-1 ${
                       user.userStatus === "active"
                         ? "bg-green-500"
                         : "bg-gray-400"
