@@ -6,7 +6,7 @@ import LatestTransactions from "../../components/LatestTransactions/LatestTransa
 export default function Home() {
   return (
     <div>
-      <div className="flex justify-between items-center mb-5 gap-6 text-center mx-auto">
+      <div className="flex justify-between items-center my-5 gap-4 md:gap-6 text-center mx-auto">
         <Features lable="درآمد" price={12_445} percentage={-1.2} />
         <Features lable="فروش" price={3_122} percentage={-8.7} />
         <Features lable="هزینه ها" price={1_132_854} percentage={4.3} />

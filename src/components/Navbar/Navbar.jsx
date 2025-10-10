@@ -61,11 +61,11 @@ export default function UserMenu() {
                 </button>
               </div>
 
-               {showProfileMenu && (
-                    <div className="absolute top-full left-2 right-2 mt-1">
-                      <ProfileMenu handleMenuItemClick={handleMenuItemClick} />
-                    </div>
-                  )}
+              {showProfileMenu && (
+                <div className="absolute top-full left-2 right-2 mt-1">
+                  <ProfileMenu handleMenuItemClick={handleMenuItemClick} />
+                </div>
+              )}
             </div>
           </div>
 
