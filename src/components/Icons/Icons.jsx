@@ -19,6 +19,8 @@ import { FaArrowDown } from "react-icons/fa";
 import { FaEye } from "react-icons/fa";
 import { TiEdit } from "react-icons/ti";
 import { LuUpload } from "react-icons/lu";
+import { FaEllipsis } from "react-icons/fa6";
+import { IoClose } from "react-icons/io5";
 
 /**
  * سیستم آیکون‌های متمرکز پروژه
@@ -49,13 +51,18 @@ const IconSystem = ({ name, size = "md", color = "primary", className = "" }) =>
     eye:FaEye,
     edit:TiEdit,
     upload:LuUpload,
+    ellipsis:FaEllipsis,
+    close:IoClose,
     
   };
 
   const sizeClasses = {
+    xs: "w-2 h-2 text-xs",
     sm: "w-4 h-4 text-sm",
     md: "w-5 h-5 text-base",
     lg: "w-6 h-6 text-lg",
+    xl: "w-8 h-8 text-xl",
+    xxl: "w-10 h-10 text-2xl  ",
   };
 
   const colorClasses = {

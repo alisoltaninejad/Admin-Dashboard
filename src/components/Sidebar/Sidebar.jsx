@@ -3,20 +3,27 @@ import { Link, useLocation } from "react-router-dom";
 import Icon from "../Icons/Icons";
 import SidebarHeader from "./SidebarHeader";
 import MainMenuItem from "./MainMenuItem";
-import { mainMenuItems, contentManagementItems, settingsItems } from "./menuData";
+import {
+  mainMenuItems,
+  contentManagementItems,
+  settingsItems,
+} from "./menuData";
 
-export default function Sidebar() {
+export default function Sidebar({ showSidebar, setShowSidebar }) {
   const [openMenus, setOpenMenus] = useState({});
+
   const location = useLocation();
 
   const toggleMenu = (menuId) => {
-    setOpenMenus(prev => ({ ...prev, [menuId]: !prev[menuId] }));
+    setOpenMenus((prev) => ({ ...prev, [menuId]: !prev[menuId] }));
   };
 
   return (
-    <div className="flex flex-col w-1/5 h-screen fixed bg-white shadow-lg">
-      <SidebarHeader />
-      
+    <div
+      className={`${
+        showSidebar ? "flex" : "hidden"
+      } xl:flex flex-col min-w-[300px] xl:min-w-[200px] lg:w-1/5 h-screen fixed top-0 start-0 bg-white shadow-lg z-50`}>
+      <SidebarHeader setShowSidebar={setShowSidebar} />
       <nav className="flex-1 overflow-y-auto p-4 space-y-1 scrollbar-hide">
         {mainMenuItems.map((item) => (
           <MainMenuItem
@@ -40,8 +47,7 @@ export default function Sidebar() {
                   location.pathname === item.path
                     ? "bg-brand-100 text-brand-800"
                     : "text-gray-700 hover:bg-brand-50"
-                }`}
-              >
+                }`}>
                 <Icon name={item.icon} className="w-5 h-5 me-2" />
                 <span>{item.title}</span>
                 {item.badge && (
@@ -67,8 +73,7 @@ export default function Sidebar() {
                   location.pathname === item.path
                     ? "bg-brand-100 text-brand-800"
                     : "text-gray-700 hover:bg-brand-50"
-                }`}
-              >
+                }`}>
                 <Icon name={item.icon} className="w-5 h-5 me-2" />
                 <span>{item.title}</span>
               </Link>
@@ -76,7 +81,6 @@ export default function Sidebar() {
           </div>
         </div>
       </nav>
-
       <div className="p-4 text-center text-xs text-gray-500 border-t border-gray-100">
         ساخته شده با ❤️ توسط علی سلطانی
       </div>
