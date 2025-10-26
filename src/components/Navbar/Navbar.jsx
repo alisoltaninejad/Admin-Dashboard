@@ -3,7 +3,7 @@ import Icon from "./../Icons/Icons";
 import ProfileMenu from "./ProfileMenu";
 import SearchBox from "./SearchBox";
 import ControlButtons from "./ControlButtons";
-export default function UserMenu() {
+export default function Navbar() {
   const [showProfileMenu, setShowProfileMenu] = useState(false);
   const [showLeftSection, setShowLeftSection] = useState(false);
   const menuRef = useRef(null);
@@ -37,7 +37,7 @@ export default function UserMenu() {
             <Icon name="king" size="lg" className="w-[50px] h-[50px]" />
           </div>
 
-          {/* -------بخش سمت چپ------------desktop */}
+  {/* -------بخش سمت چپ------------desktop */}
           <div className="hidden md:inline-block">
             <div className="flex gap-3 p-3">
               <ControlButtons name="theme" icoName="moon" />
@@ -69,7 +69,7 @@ export default function UserMenu() {
             </div>
           </div>
 
-          {/* -------بخش سمت چپ------------mobile*/}
+  {/* -------بخش سمت چپ------------mobile*/}
           <button
             onClick={() => setShowLeftSection(!showLeftSection)}
             className="md:hidden flex justify-center items-center w-fit m-3 p-2 shadow rounded-sm focus:bg-brand-50 cursor-pointer">
@@ -114,7 +114,7 @@ export default function UserMenu() {
                       onClick={() => setShowProfileMenu(!showProfileMenu)}>
                       <Icon name="userAvatar" size="sm" />
                       <h4 className="flex items-center gap-0.5 text-[10px]">
-                        حساب کاربری
+                       
                         <Icon
                           name="chevronDown"
                           size="xs"

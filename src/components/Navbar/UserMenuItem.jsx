@@ -1,6 +1,6 @@
 import React from "react";
-import Icon from "./../Icons/Icons";
-export default function UserMenu({iconName,iconSize='sm',ClickHandler,txt}) {
+import Icon from "../Icons/Icons";
+export default function UserMenuItem({iconName,iconSize='sm',ClickHandler,txt}) {
   return (
     <>
       <button
