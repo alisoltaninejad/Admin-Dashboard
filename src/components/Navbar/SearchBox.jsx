@@ -7,6 +7,7 @@ export default function SearchBox() {
 
   return (
     <div className="flex gap-3 p-3 ">
+      {/* hanling mobile menu from here */}
       <button
         onClick={() => setShowSidebar(!showSidebar)}
         className="xl:hidden flex justify-center items-center w-fit p-2 shadow rounded-sm focus:bg-brand-50 cursor-pointer">
@@ -22,8 +23,14 @@ export default function SearchBox() {
       </div>
 
       {showSidebar && (
-        <Sidebar showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
+        <>
+          <Sidebar showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
+          <div
+          onClick={()=>{setShowSidebar(false)}}
+           className="absolute inset-0 w-screen h-screen bg-black/25 backdrop-blur-[1px] z-10"></div>
+        </>
       )}
+
     </div>
   );
 }
