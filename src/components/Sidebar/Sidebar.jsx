@@ -31,6 +31,7 @@ export default function Sidebar({ showSidebar, setShowSidebar }) {
             item={item}
             isOpen={openMenus[item.id]}
             onClick={toggleMenu}
+            setShowSidebar={setShowSidebar}
           />
         ))}
 
@@ -43,6 +44,10 @@ export default function Sidebar({ showSidebar, setShowSidebar }) {
               <Link
                 key={item.id}
                 to={item.path}
+                onClick={() => {
+                  if (typeof window !== "undefined" && window.innerWidth < 1280)
+                    setShowSidebar(false);
+                }}
                 className={`flex items-center px-4 py-2 rounded-lg transition-colors ${
                   location.pathname === item.path
                     ? "bg-brand-100 text-brand-800"
@@ -69,6 +74,10 @@ export default function Sidebar({ showSidebar, setShowSidebar }) {
               <Link
                 key={item.id}
                 to={item.path}
+                onClick={() => {
+                  if (typeof window !== "undefined" && window.innerWidth < 1280)
+                    setShowSidebar(false);
+                }}
                 className={`flex items-center px-4 py-2 rounded-lg transition-colors ${
                   location.pathname === item.path
                     ? "bg-brand-100 text-brand-800"
