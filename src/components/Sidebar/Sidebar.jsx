@@ -10,10 +10,13 @@ import {
 } from "./menuData";
 
 export default function Sidebar({ showSidebar, setShowSidebar }) {
+  // مدیریت وضعیت باز یا بسته بودن چندین منو به صورت همزمان با استفاده از یک شیء (Object)
+  // کلید هر آیتم ID منو و مقدار آن boolean (باز/بسته) است
   const [openMenus, setOpenMenus] = useState({});
 
   const location = useLocation();
 
+  // تابعی برای تغییر وضعیت منو؛ وضعیت قبلی را حفظ کرده و فقط منوی کلیک شده را Toggle می‌کند
   const toggleMenu = (menuId) => {
     setOpenMenus((prev) => ({ ...prev, [menuId]: !prev[menuId] }));
   };

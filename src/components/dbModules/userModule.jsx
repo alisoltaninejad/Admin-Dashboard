@@ -1,7 +1,8 @@
 import db from "./dbConfig";
 
 const usersModule = (() => {
-  // تابع تبدیل تاریخ میلادی به شمسی
+  
+  // تبدیل تاریخ به شمسی برای یکپارچگی نمایش در تمام بخش‌های پنل
   const toPersianDate = (date = new Date()) => {
     const options = {
       year: "numeric",
@@ -12,8 +13,7 @@ const usersModule = (() => {
     return new Date(date).toLocaleDateString("fa-IR", options);
   };
 
-  // تعریف متدها به صورت جداگانه
-  // {گرفتن تمامی کاربران با تمام اطلاعات و تراکنش هاشون}
+  // دریافت کاربران و ادغام دستی تراکنش‌ها (چون IndexedDB رابطه‌مند نیست)
   const getAllUsers = async () => {
     const users = await db.users.toArray();
     const usersWithTransactions = await Promise.all(
@@ -27,7 +27,7 @@ const usersModule = (() => {
     );
     return usersWithTransactions;
   };
-  // {گرفتن کاربر از طریق آیدی  به همراه تمامی اطلاعاتش}
+
   const getUserById = async (id) => {
     const user = await db.users.get(id);
     if (!user) return null;
@@ -39,7 +39,7 @@ const usersModule = (() => {
 
     return { ...user, transactions };
   };
-  // {اضافه کردن کاربر با تمامی تراکنش هاش}
+
   const addUser = async (userData) => {
     const id = await db.users.add({
       name: userData.name || "",
@@ -47,7 +47,7 @@ const usersModule = (() => {
       userStatus: userData.userStatus || "not active",
       email: userData.email || "",
       phone: userData.phone || "",
-      joinDate: toPersianDate(),
+      joinDate: toPersianDate(), // ثبت خودکار تاریخ عضویت
     });
 
     if (userData.transactions?.length > 0) {
@@ -61,7 +61,7 @@ const usersModule = (() => {
 
     return getUserById(id);
   };
-  // {بروزرسانی اطلاعات کاربر}
+
   const updateUser = async (id, field, value) => {
     if (typeof field === "string") {
       await db.users.update(id, { [field]: value });
@@ -70,18 +70,20 @@ const usersModule = (() => {
     }
     return getUserById(id);
   };
-// { حذف کاربر و تراکنش های مرتبط باهاش}
+
   const deleteUser = async (id) => {
+    // حذف زنجیره‌ای: اول تراکنش‌ها را پاک می‌کنیم تا دیتای یتیم باقی نماند
     await db.transactions.where("userId").equals(id).delete();
     await db.users.delete(id);
     return true;
   };
-// {اضافه کردن تراکنش جدید}
+
   const addTransaction = async (userId, transactionData) => {
     const newTransaction = {
       userId,
       date: transactionData.date || toPersianDate(),
       amount: transactionData.amount || "۰",
+      // فیلتر کردن وضعیت‌های غیرمجاز برای حفظ سلامت دیتابیس
       status: ["approved", "declined", "pending"].includes(
         transactionData.status
       )
@@ -92,7 +94,7 @@ const usersModule = (() => {
     const id = await db.transactions.add(newTransaction);
     return { id, ...newTransaction };
   };
-// {تغییر وضعیت کاربر مد نظر}
+
   const changeUserStatus = async (userId, status) => {
     if (["active", "not active"].includes(status)) {
       await db.users.update(userId, { userStatus: status });
@@ -100,7 +102,7 @@ const usersModule = (() => {
     }
     return false;
   };
-// {جمع تراکنش های یک کاربر}
+
   const getTotalTransactionsAmount = async (userId) => {
     const transactions = await db.transactions
       .where("userId")
@@ -108,17 +110,17 @@ const usersModule = (() => {
       .toArray();
 
     return transactions.reduce((total, transaction) => {
+      // حذف کاما از مبلغ برای امکان انجام محاسبات ریاضی
       const amount =
         parseInt(transaction.amount.toString().replace(/,/g, ""), 10) || 0;
       return total + amount;
     }, 0);
   };
-// {ایچاد پایگاه داده و افزودن اطلاعات کاربران پیشفرض}
+
   const initializeDatabase = async () => {
     await db.users.clear();
     await db.transactions.clear();
 
-    // داده‌های نمونه اولیه
     const sampleUsers = [
       {
         id: 1,
@@ -294,12 +296,12 @@ const usersModule = (() => {
         joinDate: toPersianDate(new Date(2021, 8, 15)),
       },
     ];
+
     for (const user of sampleUsers) {
       await addUser(user);
     }
   };
 
-  // متدهای عمومی
   return {
     getAllUsers,
     getUserById,

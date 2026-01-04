@@ -10,12 +10,12 @@ export default function LatestUsers() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // دریافت کاربران به صورت ناهمگام
   useEffect(() => {
     const fetchUsers = async () => {
       try {
         const result = await userService.getAllUsers();
         if (result.success) {
+          // مرتب‌سازی نزولی بر اساس ID برای اطمینان از اینکه آخرین ثبت‌نامی‌ها در ابتدای لیست باشند
           const sortedUsers = result.data
             .sort((a, b) => b.id - a.id)
             .slice(0, 4);
@@ -37,6 +37,7 @@ export default function LatestUsers() {
     setIsModalOpen(!isModalOpen);
   };
 
+  // پیدا کردن دیتای کاربر انتخابی از لیست موجود؛ این کار ما را از یک Request اضافه به سرور بی‌نیاز می‌کند
   const selectedUser = latestUsers.find((user) => user.id === userId);
 
   if (loading) {
@@ -69,7 +70,6 @@ export default function LatestUsers() {
               key={user.id}
               className="flex w-5/6 mx-auto justify-between items-center py-3 border-b border-gray-100 last:border-0"
             >
-              {/* تصویر پروفایل */}
               <div className="w-10 h-10 flex items-center justify-center">
                 {user.pic ? (
                   <img
@@ -84,7 +84,6 @@ export default function LatestUsers() {
                 )}
               </div>
 
-              {/* اطلاعات کاربر */}
               <div className="flex-1 px-4 text-right">
                 <h3 className="font-medium text-gray-700 text-xs lg:text-sm">{user.name}</h3>
                 <h6 className="text-gray-400 text-[10px] lg:text-xs mt-1">
@@ -100,11 +99,11 @@ export default function LatestUsers() {
                 </h6>
               </div>
 
-              {/* دکمه مشاهده */}
               <button
                 className="cursor-pointer bg-gray-100 hover:bg-gray-200 rounded-md p-2 transition-colors"
                 aria-label={`مشاهده ${user.name}`}
                 onClick={() => {
+                  // ابتدا ID را ذخیره می‌کنیم تا متغیر selectedUser مقداردهی شود، سپس مودال را باز می‌کنیم
                   setUserId(user.id);
                   toggleModal();
                 }}
@@ -117,8 +116,8 @@ export default function LatestUsers() {
           <div className="text-center py-4 text-gray-500">کاربری یافت نشد</div>
         )}
 
-        {/* مودال نمایش اطلاعات کاربر */}
         <Modal isOpen={isModalOpen} onClose={toggleModal}>
+          {/* استفاده از شرط برای اطمینان از اینکه دیتای کاربر قبل از رندر شدن مودال وجود دارد */}
           {selectedUser ? (
             <div className="flex flex-col justify-between items-center p-6">
               <h2 className="text-xl font-bold mb-3 p-5">اطلاعات کاربر</h2>

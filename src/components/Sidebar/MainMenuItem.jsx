@@ -10,20 +10,19 @@ export default function MainMenuItem({
   setShowSidebar,
 }) {
   const submenus = item.submenus || [];
-
   const location = useLocation();
   const hasSubmenu = submenus?.length > 0;
 
-  const isActive =
-    location.pathname === item.path ||
-    (submenus &&
+  // بررسی فعال بودن منو: اگر مسیر فعلی با مسیر منو یا یکی از زیرمنوهایش برابر باشد، منو هایلایت می‌شود
+  const isActive = 
+    location.pathname === item.path || 
+    (submenus && 
       submenus.some((sub) => sub.path === location.pathname));
 
   return (
     <div className="group">
       {hasSubmenu ? (
         <button
-        
           className={`flex items-center justify-between w-full px-4 py-3 rounded-lg transition-colors ${
             isActive
               ? "bg-brand-100 text-brand-800"
@@ -45,6 +44,7 @@ export default function MainMenuItem({
         <Link
           to={item.path}
           onClick={() => {
+            // در دستگاه‌های موبایل و تبلت، پس از کلیک روی لینک و انتقال صفحه، سایدبار را خودکار می‌بندیم
             if (typeof window !== "undefined" && window.innerWidth < 1280)
               setShowSidebar(false);
           }}
