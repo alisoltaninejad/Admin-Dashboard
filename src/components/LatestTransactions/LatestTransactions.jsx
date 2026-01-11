@@ -88,7 +88,7 @@ export default function LatestTransactions() {
   }
 
   return (
-    <div className="w-full lg:w-4/6 shadow p-4 rounded-lg bg-white overflow-x-scroll">
+    <div className="w-full lg:w-4/6 shadow p-4 rounded-lg bg-white overflow-auto">
       <h2 className="text-xl mb-6 font-bold text-gray-800">تراکنش‌های اخیر</h2>
       {latestTransactions.length > 0 ? (
         <table className="w-full text-center ">
