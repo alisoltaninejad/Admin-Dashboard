@@ -62,7 +62,7 @@ export default function Users() {
   const handleDeleteUser = async (userId) => {
     if (window.confirm("آیا از حذف این کاربر مطمئن هستید؟")) {
       try {
-        const result = await userService.deleteUser(userId);
+        const result = await usersModule.deleteUser(userId);
         if (result) {
           setUsers((prevUsers) =>
             prevUsers.filter((user) => user.id !== userId)
