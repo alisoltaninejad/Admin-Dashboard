@@ -88,10 +88,10 @@ export default function LatestTransactions() {
   }
 
   return (
-    <div className="w-full lg:w-4/6 shadow p-4 rounded-lg bg-white">
+    <div className="w-full lg:w-4/6 shadow p-4 rounded-lg bg-white overflow-x-scroll">
       <h2 className="text-xl mb-6 font-bold text-gray-800">تراکنش‌های اخیر</h2>
       {latestTransactions.length > 0 ? (
-        <table className="w-full text-center">
+        <table className="w-full text-center ">
           <thead>
             <tr className="border-b border-gray-200 text-center">
               <th className="py-3 px-4">خریدار</th>
@@ -106,13 +106,13 @@ export default function LatestTransactions() {
                 key={`${item.userId}-${item.transaction.id}`}
                 className="border-b border-gray-100 hover:bg-gray-50 text-[10px] sm:text-xs md:text-sm"
               >
-                <td className="py-3 px-4">{item.userName}</td>
+                <td className="py-3 px-4 max-w-90 wrap-break-word">{item.userName}</td>
                 <td className="py-3 px-4">{item.transaction.date}</td>
                 <td className="py-3 px-4">
                   {Utilities.formatAmount(item.transaction.amount)} تومان
                 </td>
-                <td className="py-3 px-4">
-                  <span className={`px-2 py-1 rounded-full text-xs ${getStatusStyle(item.transaction.status)}`}>
+                <td className="py-3 px-4 min-w-22">
+                  <span className={`px-2 py-1 rounded-full text-xs  ${getStatusStyle(item.transaction.status)}`}>
                     {getStatusText(item.transaction.status)}
                   </span>
                 </td>
