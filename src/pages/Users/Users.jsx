@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import userService from "../../components/dbModules/userServices";
-import usersModule from "../../components/dbModules/userModule";
+import userService from "../../Context/dbModules/userServices";
+import usersModule from "../../Context/dbModules/userModule";
 export default function Users() {
   const [users, setUsers] = useState([]);
   const [editingUser, setEditingUser] = useState(null);

@@ -67,7 +67,7 @@ This includes:
 
 ---
 
-#### src/dbModules/
+#### src/context/dbModules/
 Local data layer built on top of IndexedDB using Dexie.js.
 
 This folder simulates a backend-like structure and includes:

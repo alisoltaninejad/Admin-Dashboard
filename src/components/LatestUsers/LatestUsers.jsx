@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Icon from "../Icons/Icons";
-import userService from "../dbModules/userServices"; 
+import userService from "../../Context/dbModules/userServices"; 
 import Modal from "../Modal/Modal";
 
 export default function LatestUsers() {
