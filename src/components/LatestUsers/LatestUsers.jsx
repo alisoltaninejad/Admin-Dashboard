@@ -85,7 +85,7 @@ export default function LatestUsers() {
               </div>
 
               <div className="flex-1 px-4 text-right">
-                <h3 className="font-medium text-gray-700 text-xs lg:text-sm">{user.name}</h3>
+                <h3 className="font-medium text-gray-700 text-xs lg:text-sm max-w-30 wrap-break-word overflow-ellipsis">{user.name}</h3>
                 <h6 className="text-gray-400 text-[10px] lg:text-xs mt-1">
                   {user.job} •{" "}
                   <span
