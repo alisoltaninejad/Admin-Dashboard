@@ -4,7 +4,7 @@ import UserMenuItem from './UserMenuItem'
 
 export default function ProfileMenu({handleMenuItemClick}) {
   return (
-    <div className="absolute top-full end-0 w-48 mt-1 p-2 bg-brand-100 shadow-lg rounded-xl z-50 border border-brand-300">
+    <div className="absolute top-full end-0 w-48 mt-1 p-2 bg-brand-100 shadow-lg shadow-brand-200 rounded-xl z-50 border border-brand-300">
   <div className="px-3 py-2 text-left">
     <h4 className="font-medium text-brand-900">username</h4>
     <h6 className="text-xs text-brand-500 truncate">email@gmail.com</h6>
