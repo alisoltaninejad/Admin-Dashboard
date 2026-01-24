@@ -1,29 +1,36 @@
 @import url('https://fonts.googleapis.com/css2?family=Aleo:ital,wght@0,100..900;1,100..900&family=Anton&family=Covered+By+Your+Grace&family=Lilita+One&family=Madimi+One&family=Moon+Dance&family=Playwrite+IT+Moderna:wght@100..400&family=Special+Gothic+Expanded+One&family=Vazirmatn:wght@100..900&display=swap');
 @import "tailwindcss";
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
+/* --- Dark Mode --- */
+html[data-theme="dark"] {
+  /* در حالت دارک، ترتیب روشنایی برای پس‌زمینه معکوس می‌شود تا عمق ایجاد شود */
+  --color-brand-50: #0f0720;  /* پس‌زمینه اصلی (بسیار تیره) */
+  --color-brand-100: #160d2b; /* کارت‌ها و سطوح (کمی روشن‌تر) */
+  --color-brand-200: #1e133a; /* هاور روی کارت‌ها */
+  --color-brand-300: #2d1b54; /* Borderها در حالت دارک */
+  --color-brand-400: #7c5cff; /* رنگ‌های کمکی روشن */
+  --color-brand-500: #a78bfa; /* رنگ برند (در دارک باید کمی روشن‌تر باشد تا بهتر دیده شود) */
+  --color-brand-600: #8b5cf6; /* دکمه‌های اصلی */
+  --color-brand-700: #d8b4fe; /* متن‌های روشن روی پس‌زمینه تیره */
+  --color-brand-800: #ede9fe; /* تیترهای اصلی در دارک */
+  --color-brand-900: #f5f3ff; /* متن‌های بسیار روشن */
+  --color-brand-950: #080410; /* عمیق‌ترین نقطه (سایه خالص) */
+}
+
+/* --- light Mode --- */
 @theme {
-  --color-brand-50: #f5f0ff;
-  /* بسیار روشن - برای پس‌زمینه */
-  --color-brand-100: #e9ddff;
-  /* روشن - برای هایلایت */
-  --color-brand-200: #d5bfff;
-  /* برای hover*/
-  --color-brand-300: #b794ff;
-  /* برای borderها */
-  --color-brand-400: #9965ff;
-  /* آکسان‌های متوسط */
-  --color-brand-500: #7c3aed;
-  /* رنگ اصلی برند (بنفش اصلی) */
-  --color-brand-600: #6b21d8;
-  /* برای متن‌های مهم */
-  --color-brand-700: #5b16c2;
-  /* برای عنوان‌ها */
-  --color-brand-800: #4c10a3;
-  /* برای دکمه‌های اصلی */
-  --color-brand-900: #3c0c82;
-  /* برای hover دکمه‌ها */
-  --color-brand-950: #2a075e;
-  /* تاریک - برای فوتر و عناصر خاص */
+ --color-brand-50: #f5f3ff;  /* پس‌زمینه بسیار روشن */
+  --color-brand-100: #ede9fe; /* پس‌زمینه بخش‌ها / کارت‌ها */
+  --color-brand-200: #ddd6fe; /* هاور کارت‌ها یا جداکننده‌ها */
+  --color-brand-300: #c4b5fd; /* Borderهای روشن */
+  --color-brand-400: #a78bfa; /* آکسان فرعی */
+  --color-brand-500: #8b5cf6; /* رنگ اصلی برند (Vivid Violet) */
+  --color-brand-600: #7c3aed; /* دکمه‌ها و CTA */
+  --color-brand-700: #6d28d9; /* هاور دکمه‌ها / متن‌های مهم */
+  --color-brand-800: #5b21b6; /* تیترها */
+  --color-brand-900: #4c1d95; /* متن‌های بسیار تیره */
+  --color-brand-950: #2e1065; /* فوتر یا عناصر بسیار عمیق */
 
   --font-vazir: "Vazirmatn", "sans-serif";
   --font-Aleo: "Aleo", "sans-serif";
@@ -34,7 +41,7 @@
   --font-moon-dance: "Moon Dance", cursive;
   --font-playwrite-it-moderna: "Playwrite IT Moderna", cursive;
   --font-special-gothic-expanded-one: "Special Gothic Expanded One", sans-serif;
-   
+
   --animate-slideDown: {
     '0%': {
       transform: 'translateY(-100%)'

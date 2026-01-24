@@ -66,7 +66,7 @@ const IconSystem = ({ name, size = "md", color = "primary", className = "" }) =>
   };
 
   const colorClasses = {
-    primary: "dark:text-gray-800 text-white",
+    primary: "text-brand-500",
     secondary: "text-gray-500 dark:text-gray-400",
     accent: "text-blue-600 dark:text-blue-400",
     danger: "text-red-500 dark:text-red-400",
