@@ -29,7 +29,7 @@ export default function Navbar() {
 
   return (
     <>
-      <div className="w-full h-[69px] xl:w-[79.8%] fixed end-0 z-50 border-b border-b-gray-200 bg-brand-200 md:bg-white dark:bg-black">
+      <div className="w-full h-[69px] xl:w-[80%]  fixed end-0 z-50 border-b border-b-gray-200 bg-brand-200 md:bg-white dark:bg-black">
         <div className="flex justify-between items-center relative">
           <SearchBox />
 
