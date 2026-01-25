@@ -8,7 +8,7 @@ export default function Input({
   ...props 
 }) {
   return (
-    <div className="flex items-center w-70 md:w-60 my-3 gap-3">
+    <div className="flex items-center w-70 md:w-60 my-3 gap-6">
       <label htmlFor={name} className="w-6 text-left">
         {text}:
       </label>
@@ -19,7 +19,7 @@ export default function Input({
         id={name}
         autoFocus={autoFocus}
         onKeyDown={onKeyDown}
-        className="flex-1 grow h-8 rounded-md shadow shadow-gray-700 ps-2"
+        className="flex-1 grow h-8 rounded-md shadow shadow-brand-500 ps-2 bg-brand-200 dark:bg-brand-300"
         {...props}
       />
     </div>

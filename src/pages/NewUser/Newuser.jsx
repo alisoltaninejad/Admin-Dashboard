@@ -18,14 +18,14 @@ export default function Newuser() {
   
   return (
     <>
-      <div className="min-w-fit min-h-fit w-[65%] h-full flex flex-col md:flex-row justify-center items-center md:gap-6 mx-auto md:mt-12 ">
+      <div className="min-w-fit min-h-fit w-[65%] flex flex-col md:flex-row justify-center items-center md:gap-6 mx-auto mt-5 md:mt-16 ">
         {/* {profile pic avatar} */}
         <div className="relative md:order-2 mx-auto">
           <Icon name="profile" color="brand" className="w-[200px] h-[200px] md:w-[300px] md:h-[300px]" />
           <Icon
             name="upload"
             color="danger"
-            className="md:w-[50px] md:h-[50px] w-[40px] h-[40px] absolute bottom-6 end-6 bg-white rounded-full p-2"
+            className="md:w-[50px] md:h-[50px] w-[40px] h-[40px] absolute bottom-6 end-6 bg-white  rounded-full p-2 shadow"
           />
         </div>
         
@@ -60,7 +60,7 @@ export default function Newuser() {
       </div>
       <button 
         type="button"
-        className="block w-80 h-8 md:w-[65%] md:h-10 md:mt-4 mx-auto rounded-md bg-brand-800 text-white cursor-pointer"
+        className="block w-80 h-8 md:w-[65%] md:h-10 md:mt-4 mx-auto rounded-md bg-brand-600 hover:bg-brand-700 dark:hover:bg-brand-400 transition-colors text-white cursor-pointer"
       >
         ثبت اطلاعات
       </button>
