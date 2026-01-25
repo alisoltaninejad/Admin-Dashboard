@@ -11,10 +11,11 @@ export default function SubmenuItem({ item, setShowSidebar }) {
       onClick={() => {
         if (window.innerWidth < 1280) setShowSidebar(false);
       }}
-      className={`block px-3 py-2 text-sm rounded-md transition-colors ${
-        isActive ? "bg-brand-100 text-brand-800" : "text-gray-600 hover:bg-brand-50"
-      }`}
-    >
+      className={`block px-3 py-2 text-sm rounded-md transition-colors hover:text-brand-700 ${
+        isActive
+          ? "bg-brand-300 text-brand-700"
+          : "text-brand-800 hover:bg-brand-300"
+      }`}>
       {item.title}
     </Link>
   );

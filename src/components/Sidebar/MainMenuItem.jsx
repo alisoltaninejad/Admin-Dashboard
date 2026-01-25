@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import Icon from "../Icons/Icons";
-import SubmenuItem from "./SubMenuItem"
+import SubmenuItem from "./SubMenuItem";
 
 export default function MainMenuItem({
   item,
@@ -14,19 +14,18 @@ export default function MainMenuItem({
   const hasSubmenu = submenus?.length > 0;
 
   // بررسی فعال بودن منو: اگر مسیر فعلی با مسیر منو یا یکی از زیرمنوهایش برابر باشد، منو هایلایت می‌شود
-  const isActive = 
-    location.pathname === item.path || 
-    (submenus && 
-      submenus.some((sub) => sub.path === location.pathname));
+  const isActive =
+    location.pathname === item.path ||
+    (submenus && submenus.some((sub) => sub.path === location.pathname));
 
   return (
     <div className="group">
       {hasSubmenu ? (
         <button
-          className={`flex items-center justify-between w-full px-4 py-3 rounded-lg transition-colors ${
+          className={`flex items-center justify-between w-full px-4 py-3 rounded-lg transition-colors hover:text-brand-500 ${
             isActive
-              ? "bg-brand-100 text-brand-800"
-              : "text-gray-700 hover:bg-brand-50"
+              ? "bg-brand-300 text-brand-700"
+              : "text-brand-800 "
           }`}
           onClick={() => onClick(item.id)}>
           <div className="flex items-center">
@@ -48,10 +47,10 @@ export default function MainMenuItem({
             if (typeof window !== "undefined" && window.innerWidth < 1280)
               setShowSidebar(false);
           }}
-          className={`flex items-center px-4 py-3 rounded-lg transition-colors ${
+          className={`flex items-center px-4 py-3 rounded-lg transition-colors hover:text-brand-500 ${
             isActive
-              ? "bg-brand-100 text-brand-800"
-              : "text-gray-700 hover:bg-brand-50"
+              ? "bg-brand-300 text-brand-700"
+              : "text-brand-800"
           }`}>
           <Icon name={item.icon} className="w-5 h-5 me-2" />
           <span>{item.title}</span>
@@ -59,7 +58,7 @@ export default function MainMenuItem({
       )}
 
       {hasSubmenu && isOpen && (
-        <div className="mt-1 pl-8 space-y-1">
+        <div className="mt-1 pl-8 space-y-1 ">
           {submenus.map((submenu) => (
             <SubmenuItem
               key={submenu.id}
