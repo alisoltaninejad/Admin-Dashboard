@@ -29,7 +29,7 @@ export default function Navbar() {
 
   return (
     <>
-      <div className="w-full h-[69px] xl:w-[80%]  fixed end-0 z-50 border-b border-b-gray-200 bg-brand-200 md:bg-white dark:bg-black">
+      <div className="w-full h-[69px] xl:w-[80%]  fixed end-0 z-50 border-b border-b-gray-200 bg-brand-200 md:bg-white dark:bg-brand-950">
         <div className="flex justify-between items-center relative">
           <SearchBox />
 
@@ -47,13 +47,12 @@ export default function Navbar() {
           {/* Desktop Version Section */}
           <div className="hidden md:inline-block">
             <div className="flex gap-3 p-3 items-center">
-              {/* این دکمه‌ها باید در ساختار داخلی خود از text-brand-700 استفاده کنند */}
               <ControlButtons name="theme" icoName="moon" />
               <ControlButtons name="notification" icoName="ring" badge="1" />
 
               <div className="relative" ref={menuRef}>
                 <button
-                  className="flex justify-between items-center gap-2 w-fit text-sm p-2 cursor-pointer hover:bg-brand-200 text-brand-800 rounded-lg transition-all"
+                  className="flex justify-between items-center gap-2 w-fit text-sm p-2 cursor-pointer hover:bg-brand-100 text-brand-800 rounded-lg transition-all"
                   onClick={() => setShowProfileMenu(!showProfileMenu)}>
                   <Icon name="userAvatar" className="text-brand-600" />
                   <h4 className="flex items-center gap-1 font-medium">
@@ -86,10 +85,10 @@ export default function Navbar() {
 
           {/* Mobile Dropdown Section */}
           {showLeftSection && (
-            <div className="md:hidden absolute top-full w-full h-fit py-1 px-2 bg-brand-100 border-t border-brand-300 shadow-md z-30">
+            <div className="md:hidden absolute top-full w-full h-fit py-1 px-2 bg-brand-100 border-y border-y-brand-300 shadow-md shadow-brand-300  z-30">
               <div className="flex justify-between items-center gap-2 px-2 py-1">
                 {/* موبایل - باکس جستجو */}
-                <div className="flex items-center w-[50%] p-2 shadow-sm border border-brand-200 dark:bg-brand-200 rounded-sm focus-within:border-brand-500 transition-all">
+                <div className="flex items-center w-[50%] p-2 shadow-sm border border-brand-200 bg-brand-200 rounded-sm focus-within:border-brand-500 transition-all">
                   <input
                     type="text"
                     className="w-full outline-none bg-transparent text-brand-800 text-xs placeholder:text-brand-400"

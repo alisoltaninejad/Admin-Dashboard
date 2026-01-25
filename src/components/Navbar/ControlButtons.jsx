@@ -18,7 +18,7 @@ export default function ControlButtons({ name, icoName, badge, iconSize }) {
 
       {badge && (
         <span className="absolute -top-1 -start-1.5 text-[10px] 
-                         bg-brand-200 text-brand-700 px-1.5 rounded-full">
+                         bg-brand-300 dark:bg-brand-400 text-brand-700 px-1.5 rounded-full">
           {badge}
         </span>
       )}
