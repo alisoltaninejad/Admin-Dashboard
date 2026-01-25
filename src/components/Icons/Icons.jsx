@@ -72,7 +72,7 @@ const IconSystem = ({ name, size = "md", color = "primary", className = "" }) =>
     danger: "text-red-500 dark:text-red-400",
     success: "text-green-500 dark:text-green-400",
     dark: "dark:text-black text-white",
-    brand: "text-brand-700",
+    brand: "text-brand-500 ",
   };
 
   const IconComponent = icons[name];
