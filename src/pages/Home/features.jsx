@@ -14,12 +14,12 @@ export default function FinancialFeature({ lable, price, percentage }) {
   };
 
   return (
-    <div className="flex-grow shadow p-4 rounded-lg bg-white space-y-4">
-      <h3 className="font-medium text-gray-700  text-sm">{lable}</h3>
+    <div className="flex-grow shadow p-4 rounded-lg bg-white dark:bg-brand-300 border border-gray-100  space-y-4">
+      <h3 className="font-bold text-brand-800  text-sm">{lable}</h3>
       
       <div className="flex flex-col md:flex-row justify-between items-center mt-2">
 
-        <h5 className="text-xs lg:text-xl font-bold text-gray-800">
+        <h5 className="text-xs lg:text-xl font-bold text-gray-700 dark:text-brand-800">
           {new Intl.NumberFormat('fa-IR').format(price)} ریال
         </h5>
         
@@ -35,7 +35,7 @@ export default function FinancialFeature({ lable, price, percentage }) {
         </div>
       </div>
       
-      <span className="text-gray-400 text-[10px] lg:text-xs mt-2 block">
+      <span className="text-gray-700 dark:text-gray-400 text-[10px] lg:text-xs mt-2 block">
         نسبت به ماه گذشته
       </span>
     </div>

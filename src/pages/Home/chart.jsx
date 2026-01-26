@@ -29,8 +29,8 @@ const SimpleFinancialChart = () => {
   };
 
   return (
-    <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
-      <h3 className="text-lg font-bold text-gray-800 mb-4">
+    <div className="bg-white dark:bg-brand-300 text-brand-800 p-4 rounded-lg shadow-sm border border-gray-100">
+      <h3 className="text-lg font-bold mb-4">
         تحلیل مالی ماهانه
       </h3>
 
@@ -50,14 +50,14 @@ const SimpleFinancialChart = () => {
               dataKey="month"
               axisLine={false}
               tickLine={false}
-              tick={{ fill: "#6b7280" }}
+              tick={{ fill: "var(--color-brand-800)" }}
               padding={{ left: 0, right: 0 }}
             />
 
             <YAxis
               axisLine={false}
               tickLine={false}
-              tick={{ fill: "#6b7280" }}
+              tick={{ fill: "var(--color-brand-800)" }}
               tickFormatter={(value) =>
                 new Intl.NumberFormat("fa-IR").format(value)
               }
@@ -68,6 +68,8 @@ const SimpleFinancialChart = () => {
                 borderRadius: "8px",
                 border: "1px solid #e5e7eb",
                 boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+                backgroundColor: "white",
+                color: "#6b7280",
               }}
               formatter={(value, name) => [
                 new Intl.NumberFormat("fa-IR").format(value) + " ریال",
@@ -84,7 +86,7 @@ const SimpleFinancialChart = () => {
               iconType="circle"
               iconSize={8}
               formatter={(value) => (
-                <span className="text-gray-600 text-sm mr-1">
+                <span className= "text-gray-700 dark:text-brand-800 text-sm mr-1">
                   {value === "cost"
                     ? "هزینه‌ها"
                     : value === "income"
@@ -127,7 +129,7 @@ const SimpleFinancialChart = () => {
         </ResponsiveContainer>
       </div>
 
-      <div className="mt-3 text-xs text-gray-500 text-center">
+      <div className="mt-3 text-xs text-gray-400 dark:text-gray-400 text-center">
         اعداد به ریال نمایش داده شده‌اند
       </div>
     </div>
