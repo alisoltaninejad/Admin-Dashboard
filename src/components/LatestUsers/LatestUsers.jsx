@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Icon from "../Icons/Icons";
-import userService from "../../Context/dbModules/userServices"; 
+import userService from "../../Context/dbModules/userServices";
 import Modal from "../Modal/Modal";
 
 export default function LatestUsers() {
@@ -59,8 +59,8 @@ export default function LatestUsers() {
   }
 
   return (
-    <div className="w-full lg:w-2/6 shadow p-4 rounded-lg bg-white">
-      <h2 className="text-xl mb-6 font-bold text-gray-800">
+    <div className="w-full lg:w-2/6 shadow p-4 rounded-lg border border-gray-100 bg-white text-gray-700 dark:bg-brand-300 dark:text-brand-800">
+      <h2 className="text-xl mb-6 font-bold text-brand-800">
         کاربران تازه ورود
       </h2>
       <div className="my-auto">
@@ -68,8 +68,7 @@ export default function LatestUsers() {
           latestUsers.map((user) => (
             <div
               key={user.id}
-              className="flex w-5/6 mx-auto justify-between items-center py-3 border-b border-gray-100 last:border-0"
-            >
+              className="flex w-5/6 mx-auto justify-between items-center py-3 border-b border-gray-100 last:border-0">
               <div className="w-10 h-10 flex items-center justify-center">
                 {user.pic ? (
                   <img
@@ -85,17 +84,20 @@ export default function LatestUsers() {
               </div>
 
               <div className="flex-1 px-4 text-right">
-                <h3 className="font-medium text-gray-700 text-xs lg:text-sm max-w-30 wrap-break-word overflow-ellipsis">{user.name}</h3>
+                <h3 className="font-medium text-gray-700 dark:text-gray-200 text-xs lg:text-sm max-w-30 wrap-break-word overflow-ellipsis">
+                  {user.name}
+                </h3>
                 <h6 className="text-gray-400 text-[10px] lg:text-xs mt-1">
-                  {user.job} •{" "}
+                  {user.job} {" "}
                   <span
                     className={`inline-block w-2 h-2 text-[6px] lg:text-[10px] rounded-full me-1 ${
                       user.userStatus === "active"
                         ? "bg-green-500"
-                        : "bg-gray-400"
-                    }`}
-                  ></span>
-                  {user.userStatus === "active" ? "فعال" : "غیرفعال"}
+                        : "bg-red-400"
+                    }`}></span>
+                  <span className="text-gray-300">
+                    {user.userStatus === "active" ? "فعال" : "غیرفعال"}
+                  </span>
                 </h6>
               </div>
 
@@ -106,8 +108,7 @@ export default function LatestUsers() {
                   // ابتدا ID را ذخیره می‌کنیم تا متغیر selectedUser مقداردهی شود، سپس مودال را باز می‌کنیم
                   setUserId(user.id);
                   toggleModal();
-                }}
-              >
+                }}>
                 <Icon name="eye" className="text-gray-600" />
               </button>
             </div>
@@ -140,8 +141,7 @@ export default function LatestUsers() {
               </div>
               <button
                 onClick={toggleModal}
-                className="mt-6 px-4 py-2 bg-red-500 text-white border-none rounded-md cursor-pointer hover:bg-red-600"
-              >
+                className="mt-6 px-4 py-2 bg-red-500 text-white border-none rounded-md cursor-pointer hover:bg-red-600">
                 بستن
               </button>
             </div>
@@ -150,8 +150,7 @@ export default function LatestUsers() {
               <p>اطلاعات کاربر یافت نشد</p>
               <button
                 onClick={toggleModal}
-                className="mt-4 px-4 py-2 bg-red-500 text-white border-none rounded-md cursor-pointer hover:bg-red-600"
-              >
+                className="mt-4 px-4 py-2 bg-red-500 text-white border-none rounded-md cursor-pointer hover:bg-red-600">
                 بستن
               </button>
             </div>
