@@ -68,7 +68,7 @@ const SimpleFinancialChart = () => {
                 borderRadius: "8px",
                 border: "1px solid #e5e7eb",
                 boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
-                backgroundColor: "white",
+                backgroundColor: "var(--color-brand-50)",
                 color: "#6b7280",
               }}
               formatter={(value, name) => [
