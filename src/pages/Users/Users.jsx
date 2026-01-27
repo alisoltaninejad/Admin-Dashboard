@@ -128,43 +128,43 @@ export default function Users() {
   }
 
   return (
-    <div className="container mx-auto md:px-4 md:py-6 mt-10 md:mt-0">
-      <div className="bg-white shadow-md rounded-lg overflow-x-scroll ">
-        <table className="min-w-full divide-y divide-gray-200  ">
-          <thead className="bg-gray-50">
+    <div className="container mx-auto md:px-4 md:py-6  mt-10 md:mt-0">
+      <div className="bg-white  shadow-md shadow-gray-300 dark:shadow-neutral-600 rounded-lg overflow-x-scroll  ">
+        <table className="min-w-full divide-y divide-gray-200 dark:bg-brand-300  ">
+          <thead className="bg-gray-300 text-gray-900 dark:bg-brand-200 dark:text-white">
             <tr>
-              <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-right text-xs font-medium uppercase tracking-wider">
                 ID
               </th>
-              <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-right text-xs font-medium uppercase tracking-wider">
                 نام
               </th>
-              <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-right text-xs font-medium uppercase tracking-wider">
                 ایمیل
               </th>
-              <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-right text-xs font-medium uppercase tracking-wider">
                 وضعیت
               </th>
-              <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-right text-xs font-medium uppercase tracking-wider">
                 تعداد تراکنش‌ها
               </th>
-              <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-right text-xs font-medium uppercase tracking-wider">
                 جمع تراکنش‌ها
               </th>
-              <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-right text-xs font-medium uppercase tracking-wider">
                 عملیات
               </th>
             </tr>
           </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
+          <tbody className="bg-white dark:bg-brand-300 dark:text-white divide-y divide-gray-200">
             {users.map((user) => (
-              <tr key={user.id} className="hover:bg-gray-50">
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+              <tr key={user.id} className="hover:bg-gray-50 dark:hover:bg-brand-200">
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-white">
                   {user.id}
                 </td>
 
                 {/* نام کاربر */}
-                <td className="px-6 py-4 whitespace-nowrap">
+                <td className="px-6 py-4 whitespace-nowrap text-gray-800 dark:text-gray-300">
                   {editingUser === user.id && editField === "name" ? (
                     <div className="flex items-center gap-2">
                       <input
@@ -187,7 +187,7 @@ export default function Users() {
                     </div>
                   ) : (
                     <span
-                      className="text-sm font-medium text-blue-600 hover:text-blue-800 hover:underline cursor-pointer"
+                      className="text-sm font-medium text-brand-800 dark:text-gray-300 hover:text-brand-500 hover:underline cursor-pointer"
                       onClick={() =>
                         handleEditClick(user.id, "name", user.name)
                       }>
@@ -197,7 +197,7 @@ export default function Users() {
                 </td>
 
                 {/* ایمیل کاربر */}
-                <td className="px-6 py-4 whitespace-nowrap">
+                <td className="px-6 py-4 whitespace-nowrap text-gray-800 dark:text-gray-300">
                   {editingUser === user.id && editField === "email" ? (
                     <div className="flex items-center gap-2">
                       <input
@@ -220,7 +220,7 @@ export default function Users() {
                     </div>
                   ) : (
                     <span
-                      className="text-sm text-gray-600 hover:text-gray-800 hover:underline cursor-pointer"
+                      className="text-sm text-gray-600 dark:text-gray-300 hover:text-brand-500 hover:underline cursor-pointer"
                       onClick={() =>
                         handleEditClick(user.id, "email", user.email)
                       }>
@@ -242,19 +242,19 @@ export default function Users() {
                 </td>
 
                 {/* تعداد تراکنش‌ها */}
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-white">
                   {formatTransactionCount(user.transactions?.length || 0)}
                 </td>
 
                 {/* جمع تراکنش‌ها */}
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-white">
                   {calculateTotalTransactions(user.transactions || [])} تومان
                 </td>
 
                 {/* عملیات */}
                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                   <button
-                    className="px-3 py-1 text-xs bg-red-500 text-white rounded hover:bg-red-600 transition-colors"
+                    className="px-3 py-1 text-xs bg-red-400 text-white rounded hover:bg-red-500 transition-colors"
                     onClick={() => handleDeleteUser(user.id)}>
                     حذف
                   </button>
