@@ -88,12 +88,12 @@ export default function LatestTransactions() {
   }
 
   return (
-    <div className="w-full lg:w-4/6 shadow p-4 rounded-lg bg-white overflow-auto">
-      <h2 className="text-xl mb-6 font-bold text-gray-800">تراکنش‌های اخیر</h2>
+    <div className="w-full lg:w-4/6 shadow p-4 rounded-lg border border-gray-100 bg-white text-gray-700 dark:bg-brand-300 dark:text-brand-800 overflow-auto">
+      <h2 className="text-xl mb-6 font-bold text-brand-800">تراکنش‌های اخیر</h2>
       {latestTransactions.length > 0 ? (
         <table className="w-full text-center ">
           <thead>
-            <tr className="border-b border-gray-200 text-center">
+            <tr className="border-b border-gray-100 text-center">
               <th className="py-3 px-4">خریدار</th>
               <th className="py-3 px-4">تاریخ</th>
               <th className="py-3 px-4">مبلغ</th>
@@ -104,7 +104,7 @@ export default function LatestTransactions() {
             {latestTransactions.map((item) => (
               <tr
                 key={`${item.userId}-${item.transaction.id}`}
-                className="border-b border-gray-100 hover:bg-gray-50 text-[10px] sm:text-xs md:text-sm"
+                className="text-[10px] sm:text-xs md:text-sm"
               >
                 <td className="py-3 px-4 max-w-90 wrap-break-word">{item.userName}</td>
                 <td className="py-3 px-4">{item.transaction.date}</td>
