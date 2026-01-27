@@ -2,6 +2,6 @@ import React from 'react'
 
 export default function AccountSetting() {
   return (
-    <div>AccountSetting</div>
+    <div  className="mt-10 md:mt-0">AccountSetting</div>
   )
 }

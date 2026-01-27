@@ -2,6 +2,6 @@ import React from 'react'
 
 export default function Accessibility() {
   return (
-    <div>Accessibility</div>
+    <div  className="mt-10 md:mt-0">Accessibility</div>
   )
 }

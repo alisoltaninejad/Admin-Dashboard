@@ -128,7 +128,7 @@ export default function Users() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto md:px-4 md:py-6 mt-10 md:mt-0">
       <div className="bg-white shadow-md rounded-lg overflow-x-scroll ">
         <table className="min-w-full divide-y divide-gray-200  ">
           <thead className="bg-gray-50">

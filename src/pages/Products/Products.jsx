@@ -2,6 +2,6 @@ import React from 'react'
 
 export default function Products() {
   return (
-    <div>Products</div>
+    <div  className="mt-10 md:mt-0">Products</div>
   )
 }
