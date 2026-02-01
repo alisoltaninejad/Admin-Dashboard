@@ -9,6 +9,5 @@ const testPhoneNumber = (value) => {
 
 export default {
     testEmail,
-    testCodeMelli,
     testPhoneNumber
 }
