@@ -112,7 +112,7 @@ export default function LatestTransactions() {
                   {Utilities.formatAmount(item.transaction.amount)} تومان
                 </td>
                 <td className="py-3 px-4 min-w-22">
-                  <span className={`px-2 py-1 rounded-full text-xs  ${getStatusStyle(item.transaction.status)}`}>
+                  <span className={`px-2 py-1 rounded-full text-xs text-nowrap  ${getStatusStyle(item.transaction.status)}`}>
                     {getStatusText(item.transaction.status)}
                   </span>
                 </td>
