@@ -38,7 +38,7 @@ export const EditableCell = ({
         </div>
       ) : (
         <span
-          className="text-sm text-gray-600 dark:text-gray-300 hover:text-brand-500 hover:underline cursor-pointer"
+          className="text-sm text-gray-800 dark:text-gray-300 hover:text-brand-500 hover:underline cursor-pointer"
           onClick={() => onEditClick(user.id, field, user[field])}>
           {user[field] || "-"}
         </span>

@@ -18,7 +18,6 @@ export const formatTransactionCount = (count) => {
 };
 
 
-
 export const formatCurrency = (amount) => {
   return (amount || 0).toLocaleString("fa-IR");
 };
@@ -28,3 +27,4 @@ export const formatCurrency = (amount) => {
 export const formatDate = (dateString) => {
   return new Date(dateString).toLocaleDateString("fa-IR");
 };
+

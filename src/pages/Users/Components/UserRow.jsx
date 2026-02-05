@@ -19,8 +19,8 @@ export const UserRow = ({
   return (
     <tr
       key={user.id}
-      className="flex flex-col bg-white dark:bg-brand-300 md:table-row mb-4 md:mb-0 border md:border-none rounded-lg md:rounded-none p-4 md:p-0">
-      <td className="px-2 py-4 whitespace-nowrap text-sm text-brand-900">
+      className="flex flex-col bg-white dark:bg-brand-300 md:table-row mb-4 md:mb-0 border border-brand-800 md:border-none rounded-lg md:rounded-none  p-4 md:p-0">
+      <td className="px-4 py-4 whitespace-nowrap text-sm text-brand-900">
         {user.id}
       </td>
 
