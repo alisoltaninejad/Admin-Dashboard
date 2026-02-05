@@ -1,5 +1,8 @@
 import React, { useEffect } from "react";
-import { calculateTotalTransactions, formatTransactionCount } from "./Utils/Utils";
+import {
+  calculateTotalTransactions,
+  formatTransactionCount,
+} from "./Utils/Utils.js";
 import { useUsers } from "./hooks/useUsers";
 import { UserRow } from "./components/UserRow";
 
@@ -38,10 +41,9 @@ export default function Users() {
     return (
       <div className="text-center p-8">
         <div className="text-red-500 mb-4">{error}</div>
-        <button 
-          onClick={loadUsers} 
-          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-        >
+        <button
+          onClick={loadUsers}
+          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
           تلاش مجدد
         </button>
       </div>
@@ -49,38 +51,30 @@ export default function Users() {
   }
 
   return (
-    <div className="container mt-10 md:mt-0 mx-auto p-4">
-      <div className="overflow-x-auto">
-        <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-          <thead className="hidden md:inline bg-gray-50 dark:bg-brand-800">
+    <div className="lg:container mt-10 md:mt-0 mx-auto p-4 ">
+      <div className="overflow-x-autorounded-xl md:overflow-x-scroll lg:overflow-x-clip">
+        <table className="min-w-full divide-y divide-gray-400 md:shadow-sm text-gray-800 md:border md:border-gray-100 dark:border-brand-900 rounded-xl">
+          <thead className="hidden md:table-header-group bg-gray-300  dark:bg-brand-200 ">
             <tr className="flex flex-col md:table-row">
-              <th className="px-2 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                ID
-              </th>
-              <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                نام کاربر
-              </th>
-              <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                ایمیل
-              </th>
-              <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                شغل
-              </th>
-              <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                وضعیت
-              </th>
-              <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                تعداد تراکنش
-              </th>
-              <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                جمع تراکنش
-              </th>
-              <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                عملیات
-              </th>
+              {[
+                "ID",
+                "نام کاربر",
+                "ایمیل",
+                "شغل",
+                "وضعیت",
+                "تعداد تراکنش",
+                "جمع تراکنش",
+                "عملیات",
+              ].map((item) => (
+                <th
+                  key={item}
+                  className="px-2 py-4 text-center text-xs font-bold dark:text-gray-400 uppercase tracking-wider">
+                  {item}
+                </th>
+              ))}
             </tr>
           </thead>
-          <tbody className="bg-white dark:bg-brand-900 divide-y divide-gray-200 dark:divide-gray-700">
+          <tbody className="divide divide-gray-300/60">
             {users.map((user) => (
               <UserRow
                 key={user.id}
