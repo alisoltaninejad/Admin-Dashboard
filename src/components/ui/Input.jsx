@@ -1,6 +1,6 @@
 import React, { useEffect, useReducer } from "react";
 import validator from "../../validators/validator";
-
+import Icons from "./../Icons/Icons";
 const inputReducer = (state, action) => {
   switch (action.type) {
     case "CHANGE": {
@@ -41,21 +41,31 @@ export default function Input(props) {
 
   const element =
     props.element === "input" ? (
-      <div className="flex items-center w-96 md:w-60 my-3 gap-9">
-        <label htmlFor={props.name} className="flex w-6 text-left">
-          {props.lable}: {props.required && (<span className="text-red-700 px-1">*</span>)}
+      <div className="flex justify-center items-center mx-auto my-3 gap-3">
+        <label htmlFor={props.name} className="flex w-fit text-left">
+          {props.lable}:
+          {props.required && <span className="text-red-700 px-1">*</span>}
         </label>
-        <input
-          type={props.type}
-          placeholder={props.placeholder}
-          className={`flex-1 min-w-56 grow text-sm h-8 rounded-md shadow shadow-brand-500  ps-2 bg-brand-200 dark:bg-brand-300 focus:outline-none focus:ring-2 ${props.className} ${
-            mainInput.isValid
-              ? "focus:border-green-600 focus:ring-green-300"
-              : "focus:border-red-600 focus:ring-red-400"
-          }`}
-          value={mainInput.value}
-          onChange={onChangeHandler}
-        />
+        <div
+          className={`flex items-center justify-around min-w-56 text-sm h-8 rounded-md px-2  bg-brand-200 dark:bg-brand-300 
+        ${
+          mainInput.isValid
+            ? "border border-green-500 dark:border-green-500/50"
+            : "border border-red-500 dark:border-red-500/50 "
+        }`}>
+          <input
+            type={props.type}
+            placeholder={props.placeholder}
+            className={`flex-1  grow  ps-2 focus:outline-none ${props.className}`}
+            value={mainInput.value}
+            onChange={onChangeHandler}
+          />
+          {mainInput.isValid ? (
+            <Icons name="check" color="success" />
+          ) : (
+            <Icons name="wrong" color="danger" />
+          )}
+        </div>
       </div>
     ) : (
       <div className="flex items-center w-70 md:w-60 my-3 gap-6">

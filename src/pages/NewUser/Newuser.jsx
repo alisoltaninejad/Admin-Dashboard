@@ -45,7 +45,7 @@ export default function Newuser() {
         </div>
         
         {/* {inputs section } */}
-        <div className="flex md:order-1 flex-col justify-center items-center p-6">
+        <div className="flex md:order-1 flex-col justify-center items-baseline mx-auto p-6">
           <Input
             element="input"
             name="name" 
@@ -66,7 +66,7 @@ export default function Newuser() {
             id="email"
             lable="ایمیل"
             required={true}
-            placeholder="alosolinejad@gmail.com"
+            placeholder="alisolinejad@gmail.com"
             validations={[
               requiredValidator(),
               minValidator(4),
@@ -78,7 +78,7 @@ export default function Newuser() {
             element="input"
             name="phone" 
             id="phone"
-            lable="تلفن"
+            lable="تلفن همراه"
             required={true}
             placeholder="09135006973"
             validations={[
@@ -103,8 +103,8 @@ export default function Newuser() {
       </div>
       <Button
         type="submit"
-        disabled={true}
-        className="block w-80 h-8 md:w-[65%] md:h-10 md:mt-4 mx-auto rounded-md bg-brand-600 hover:bg-brand-700 dark:hover:bg-brand-400 transition-all duration-200 text-white cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:bg-brand-600 disabled:dark:hover:bg-brand-600 disabled:transform-none disabled:shadow-none">
+        disabled
+        className="block min-w-96  h-8 w-[65%] md:h-10 md:mt-4 mx-auto rounded-md bg-brand-600 hover:bg-brand-700 dark:hover:bg-brand-400 transition-all duration-200 text-white cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:bg-brand-600 disabled:dark:hover:bg-brand-600 disabled:transform-none disabled:shadow-none">
         ثبت اطلاعات
       </Button>
     </>

@@ -1,26 +1,28 @@
 // src/components/IconSystem/IconSystem.js
 import { HiMiniBars3BottomRight } from "react-icons/hi2";
-import { FiSearch } from "react-icons/fi";
-import { IoMoonOutline } from "react-icons/io5";
-import { PiBellRinging } from "react-icons/pi";
-import { FaRegUser } from "react-icons/fa";
+import { FiSearch,FiShoppingCart } from "react-icons/fi";
+import { PiBellRinging,PiWarningCircle } from "react-icons/pi";
 import { IoIosArrowDown } from "react-icons/io";
 import { GoSignOut } from "react-icons/go";
 import { CgProfile } from "react-icons/cg";
-import { IoSettingsOutline } from "react-icons/io5";
-import { PiWarningCircle } from "react-icons/pi";
 import { GiChessKing } from "react-icons/gi";
 import { RxDashboard } from "react-icons/rx";
-import { FiShoppingCart } from "react-icons/fi";
-import { HiOutlineDocumentDuplicate } from "react-icons/hi";
-import { IoDocumentTextOutline } from "react-icons/io5";
-import { FaArrowUp } from "react-icons/fa";
-import { FaArrowDown } from "react-icons/fa";
-import { FaEye } from "react-icons/fa";
+import {
+  HiCheck,
+  HiOutlineX,
+  HiCode,
+  HiOutlineDocumentDuplicate,
+} from "react-icons/hi";
+import {
+  IoDocumentTextOutline,
+  IoClose,
+  IoSettingsOutline,
+  IoMoonOutline,
+} from "react-icons/io5";
+import { FaEye, FaArrowUp, FaArrowDown, FaRegUser } from "react-icons/fa";
 import { TiEdit } from "react-icons/ti";
 import { LuUpload } from "react-icons/lu";
 import { FaEllipsis } from "react-icons/fa6";
-import { IoClose } from "react-icons/io5";
 
 /**
  * سیستم آیکون‌های متمرکز پروژه
@@ -29,7 +31,12 @@ import { IoClose } from "react-icons/io5";
  * @param {string} color - رنگ آیکون
  * @param {string} className - کلاس‌های اضافی
  */
-const IconSystem = ({ name, size = "md", color = "primary", className = "" }) => {
+const IconSystem = ({
+  name,
+  size = "md",
+  color = "primary",
+  className = "",
+}) => {
   const icons = {
     menu: HiMiniBars3BottomRight,
     search: FiSearch,
@@ -38,22 +45,24 @@ const IconSystem = ({ name, size = "md", color = "primary", className = "" }) =>
     userAvatar: FaRegUser,
     profile: CgProfile,
     chevronDown: IoIosArrowDown,
-    signOut:GoSignOut,
-    setting:IoSettingsOutline,
-    warn:PiWarningCircle,
-    king:GiChessKing,
-    dashboard:RxDashboard,
-    shoppingCart:FiShoppingCart,
-    pages:HiOutlineDocumentDuplicate,
-    document:IoDocumentTextOutline,
-    arrowUp:FaArrowUp,
-    arrowDown:FaArrowDown,
-    eye:FaEye,
-    edit:TiEdit,
-    upload:LuUpload,
-    ellipsis:FaEllipsis,
-    close:IoClose,
-    
+    signOut: GoSignOut,
+    setting: IoSettingsOutline,
+    warn: PiWarningCircle,
+    check: HiCheck,
+    wrong: HiOutlineX,
+    code: HiCode,
+    king: GiChessKing,
+    dashboard: RxDashboard,
+    shoppingCart: FiShoppingCart,
+    pages: HiOutlineDocumentDuplicate,
+    document: IoDocumentTextOutline,
+    arrowUp: FaArrowUp,
+    arrowDown: FaArrowDown,
+    eye: FaEye,
+    edit: TiEdit,
+    upload: LuUpload,
+    ellipsis: FaEllipsis,
+    close: IoClose,
   };
 
   const sizeClasses = {
