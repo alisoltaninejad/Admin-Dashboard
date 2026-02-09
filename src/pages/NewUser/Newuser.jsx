@@ -2,17 +2,20 @@ import { useRef } from "react";
 import Icon from "../../components/Icons/Icons";
 import Button from "../../components/ui/Button";
 import Input from "../../components/ui/Input";
+import Select from "../../components/ui/Select";
+import Jobs from "./jobsList"
 import { useForm } from "../../Hooks/useForm";
 import {
   requiredValidator,
   minValidator,
   maxValidator,
+  phoneValidator,
   emailValidator,
-} from "../../validators/rules";
+} from "../../Validators/rules";
 
 export default function Newuser() {
   const inputRefs = useRef([]);
-  
+
   const [formState, onInputHandler] = useForm(
     {
       username: {
@@ -26,7 +29,7 @@ export default function Newuser() {
     },
     false,
   );
-  
+
   return (
     <>
       <div className="min-w-fit min-h-fit w-[65%] flex flex-col md:flex-row justify-center items-center md:gap-6 mx-auto mt-5 md:mt-16 ">
@@ -43,14 +46,14 @@ export default function Newuser() {
             className="md:w-[50px] md:h-[50px] w-[40px] h-[40px] absolute bottom-6 end-6 bg-white  rounded-full p-2 shadow"
           />
         </div>
-        
+
         {/* {inputs section } */}
         <div className="flex md:order-1 flex-col justify-center items-baseline mx-auto p-6">
           <Input
             element="input"
-            name="name" 
+            name="name"
             id="username"
-            lable="نام"
+            label="نام"
             placeholder="علی سلطانی نژاد"
             autoFocus={true}
             required={true}
@@ -60,45 +63,32 @@ export default function Newuser() {
               maxValidator(30),
             ]}
             onInputHandler={onInputHandler}></Input>
-          <Input 
+          <Input
             element="input"
-            name="email" 
+            name="email"
             id="email"
-            lable="ایمیل"
+            label="ایمیل"
             required={true}
             placeholder="alisolinejad@gmail.com"
-            validations={[
-              requiredValidator(),
-              minValidator(4),
-              maxValidator(30),
-              emailValidator(),
-            ]}
+            validations={[requiredValidator(), emailValidator()]}
             onInputHandler={onInputHandler}></Input>
-          <Input 
+          <Input
             element="input"
-            name="phone" 
+            name="phone"
             id="phone"
-            lable="تلفن همراه"
+            label="تلفن همراه"
             required={true}
             placeholder="09135006973"
-            validations={[
-              requiredValidator(),
-              minValidator(11),
-              maxValidator(11),
-            ]}
+            validations={[phoneValidator()]}
             onInputHandler={onInputHandler}></Input>
-          <Input 
-            element="input"
-            name="job" 
+          <Select
+            name="job"
             id="job"
-            lable="شغل"
+            label="شغل"
             placeholder="انتخاب از لیست"
-            validations={[
-              requiredValidator(),
-              minValidator(11),
-              maxValidator(11),
-            ]}
-            onInputHandler={onInputHandler}></Input>
+            onInputHandler={onInputHandler}
+            options={Jobs}>
+            </Select>
         </div>
       </div>
       <Button

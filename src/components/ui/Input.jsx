@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer } from "react";
-import validator from "../../validators/validator";
+import validator from "./../../Validators/validator"
 import Icons from "./../Icons/Icons";
 const inputReducer = (state, action) => {
   switch (action.type) {
@@ -43,7 +43,7 @@ export default function Input(props) {
     props.element === "input" ? (
       <div className="flex justify-center items-center mx-auto my-3 gap-3">
         <label htmlFor={props.name} className="flex w-fit text-left">
-          {props.lable}:
+          {props.label}:
           {props.required && <span className="text-red-700 px-1">*</span>}
         </label>
         <div
