@@ -1,6 +1,6 @@
-import React, { useEffect, useReducer } from "react";
-import validator from "../../validators/validator";
-
+import { useEffect, useReducer } from "react";
+import validator from "./../../Validators/validator"
+import Icons from "./../Icons/Icons";
 const inputReducer = (state, action) => {
   switch (action.type) {
     case "CHANGE": {

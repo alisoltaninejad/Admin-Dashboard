@@ -1,4 +1,3 @@
-import React from "react";
 import Features from "./features";
 import Chart from "./chart";
 import LatestUsers from "../../components/LatestUsers/LatestUsers";
