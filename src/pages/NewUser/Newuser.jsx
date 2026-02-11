@@ -8,7 +8,7 @@ import {
   minValidator,
   maxValidator,
   emailValidator,
-} from "../../validators/rules";
+} from "./../../Validators/rules.js";
 
 export default function Newuser() {
   const inputRefs = useRef([]);
