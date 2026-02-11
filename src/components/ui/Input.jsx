@@ -41,13 +41,13 @@ export default function Input(props) {
 
   const element =
     props.element === "input" ? (
-      <div className="flex justify-center items-center mx-auto my-3 gap-3">
+      <div className="w-full flex justify-between items-baseline  my-3 gap-2">
         <label htmlFor={props.name} className="flex w-fit text-left">
           {props.label}:
           {props.required && <span className="text-red-700 px-1">*</span>}
         </label>
         <div
-          className={`flex items-center justify-around min-w-56 text-sm h-8 rounded-md px-2  bg-brand-200 dark:bg-brand-300 
+          className={`flex items-center justify-between min-w-50 text-sm h-8 rounded-md px-2  bg-brand-200 dark:bg-brand-300 
         ${
           mainInput.isValid
             ? "border border-green-500 dark:border-green-500/50"
@@ -68,7 +68,7 @@ export default function Input(props) {
         </div>
       </div>
     ) : (
-      <div className="flex items-center w-70 md:w-60 my-3 gap-6">
+      <div className="flex justify-between items-center w-70 md:w-60 my-3 gap-3">
         <label htmlFor={props.name} className="w-6 text-left">
           {props.label}:
         </label>

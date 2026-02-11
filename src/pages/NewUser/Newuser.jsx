@@ -48,15 +48,15 @@ export default function Newuser() {
         </div>
 
         {/* {inputs section } */}
-        <div className="flex md:order-1 flex-col justify-center items-baseline mx-auto p-6">
+        <div className=" flex md:order-1 flex-col justify-baseline items-baseline mx-auto p-6">
           <Input
             element="input"
             name="name"
             id="username"
             label="نام"
             placeholder="علی سلطانی نژاد"
-            autoFocus={true}
-            required={true}
+            autoFocus
+            required
             validations={[
               requiredValidator(),
               minValidator(3),
@@ -68,7 +68,7 @@ export default function Newuser() {
             name="email"
             id="email"
             label="ایمیل"
-            required={true}
+            required
             placeholder="alisolinejad@gmail.com"
             validations={[requiredValidator(), emailValidator()]}
             onInputHandler={onInputHandler}></Input>
@@ -77,7 +77,7 @@ export default function Newuser() {
             name="phone"
             id="phone"
             label="تلفن همراه"
-            required={true}
+            required
             placeholder="09135006973"
             validations={[phoneValidator()]}
             onInputHandler={onInputHandler}></Input>
@@ -85,6 +85,7 @@ export default function Newuser() {
             name="job"
             id="job"
             label="شغل"
+            required
             placeholder="انتخاب از لیست"
             onInputHandler={onInputHandler}
             options={Jobs}>
