@@ -4,7 +4,8 @@ const testEmail = (value) => {
 }
 
 const testPhoneNumber = (value) => {
-    // regex
+    const phonePattent = /^(0|98|\+98)?9\d{9}$/
+    return phonePattent.test(value)
 }
 
 export default {
