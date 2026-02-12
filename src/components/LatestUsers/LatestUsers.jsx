@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Icon from "../Icons/Icons";
 import userService from "../../Context/dbModules/userServices";
 import Modal from "../Modal/Modal";
@@ -87,7 +87,7 @@ export default function LatestUsers() {
                 <h3 className="font-medium text-gray-700 dark:text-gray-200 text-xs lg:text-sm max-w-30 wrap-break-word overflow-ellipsis">
                   {user.name}
                 </h3>
-                <h6 className="text-gray-400 text-[10px] lg:text-xs mt-1">
+                <h6 className="text-gray-400 max-w-40 wrap-break-word overflow-ellipsis text-[10px] lg:text-xs mt-1">
                   {user.job} {" "}
                   <span
                     className={`inline-block w-2 h-2 text-[6px] lg:text-[10px] rounded-full me-1 ${

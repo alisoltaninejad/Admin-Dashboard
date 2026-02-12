@@ -11,7 +11,7 @@ import {
   maxValidator,
   phoneValidator,
   emailValidator,
-} from "../../Validators/rules";
+} from "./../../Validators/rules.js";
 
 export default function Newuser() {
   const inputRefs = useRef([]);
@@ -41,13 +41,13 @@ export default function Newuser() {
 
   return (
     <>
-      <div className="min-w-fit min-h-fit bg-brand-100 w-[65%] h-screen flex flex-col md:flex-row justify-start md:justify-center items-center md:gap-6 mx-auto mt-5 md:mt-16 ">
+      <div className="min-w-fit min-h-fit bg-brand-100 w-[65%] h-screen md:h-[calc(100vh-220px)] flex flex-col md:flex-row justify-start items-center md:items-start md:gap-6 mx-auto mt-5 md:mt-16 ">
         {/* {profile pic avatar} */}
         <div className="relative md:order-2 mx-auto">
           <Icon
             name="profile"
             color="brand"
-            className="w-[200px] h-[200px] md:w-[300px] md:h-[300px]"
+            className="w-[200px] h-[200px] md:w-[330px] md:h-[330px]"
           />
           <Icon
             name="upload"
@@ -56,8 +56,8 @@ export default function Newuser() {
           />
         </div>
 
-      <div>
-          {/* {inputs section } */}
+       <div>
+           {/* {inputs section } */}
         <div className=" flex md:order-1 flex-col justify-baseline items-baseline mx-auto p-6">
              <Input
             element="input"
@@ -100,11 +100,10 @@ export default function Newuser() {
             onChange={onInputHandler}
             options={Jobs}></Select>
         </div>
-      </div>
-      <Button
+        <Button
         type="submit"
         disabled={!formState.isFormValid}
-        className={`block min-w-96  h-8 w-[65%] md:h-10 md:mt-4 mx-auto rounded-md bg-brand-600 hover:bg-brand-700 dark:hover:bg-brand-400 transition-all duration-200 text-white cursor-pointer 
+        className={`block min-w-96  h-8 w-[65%] md:h-10 md:mt-1 mx-auto rounded-md bg-brand-600 hover:bg-brand-700 dark:hover:bg-brand-400 transition-all duration-200 text-white cursor-pointer 
            ${
             formState.isFormValid
             ? ""
@@ -112,7 +111,9 @@ export default function Newuser() {
            } `}>
         ثبت اطلاعات
       </Button>
+       </div>
       </div>
+      
     </>
   );
 }

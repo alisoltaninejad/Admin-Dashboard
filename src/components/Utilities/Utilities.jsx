@@ -1,4 +1,3 @@
-import React from "react";
 import { toGregorian } from "jalaali-js";
 
 // برای انجام محاسبات ریاضی یا ذخیره‌سازی در دیتابیس، ابتدا باید اعداد فارسی را به انگلیسی تبدیل کنیم

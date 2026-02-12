@@ -1,102 +1,37 @@
-import React, { useState, useEffect } from "react";
-import userService from "../../Context/dbModules/userServices";
-import usersModule from "../../Context/dbModules/userModule";
-export default function Users() {
-  const [users, setUsers] = useState([]);
-  const [editingUser, setEditingUser] = useState(null);
-  const [editField, setEditField] = useState("");
-  const [editValue, setEditValue] = useState("");
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+import React, { useEffect } from "react";
+import {
+  calculateTotalTransactions,
+  formatTransactionCount,
+} from "./Utils/Utils.js";
+import { useUsers } from "./hooks/useUsers";
+import { UserRow } from "./components/UserRow";
 
-  // بارگذاری اولیه کاربران
+export default function Users() {
+  const {
+    users,
+    editingUser,
+    editField,
+    editValue,
+    loading,
+    error,
+    setEditValue,
+    loadUsers,
+    handleEditClick,
+    handleSaveEdit,
+    handleCancelEdit,
+    handleDeleteUser,
+  } = useUsers();
+
   useEffect(() => {
     loadUsers();
-  }, []);
-
-  const loadUsers = async () => {
-    setLoading(true);
-    setError(null);
-    try {
-      const result = await userService.getAllUsers();
-      if (result.success) {
-        setUsers(result.data);
-      } else {
-        setError(result.error);
-      }
-    } catch (err) {
-      setError("خطا در دریافت اطلاعات کاربران");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleEditClick = (userId, field, currentValue) => {
-    setEditingUser(userId);
-    setEditField(field);
-    setEditValue(currentValue);
-  };
-
-  const handleSaveEdit = async (userId) => {
-    try {
-      const result = await usersModule.updateUser(userId, editField, editValue);
-
-      if (result) {
-        await loadUsers();
-        setEditingUser(null);
-        setEditField("");
-        setEditValue("");
-      }
-    } catch (err) {
-      setError("خطا در به‌روزرسانی کاربر ");
-      console.error(err);
-    }
-  };
-
-  const handleCancelEdit = () => {
-    setEditingUser(null);
-    setEditField("");
-    setEditValue("");
-  };
-
-  const handleDeleteUser = async (userId) => {
-    if (window.confirm("آیا از حذف این کاربر مطمئن هستید؟")) {
-      try {
-        const result = await usersModule.deleteUser(userId);
-        if (result) {
-          setUsers((prevUsers) =>
-            prevUsers.filter((user) => user.id !== userId)
-          );
-        } else {
-          setError("خطا در حذف کاربر");
-        }
-      } catch (err) {
-        setError("خطا در حذف کاربر");
-      }
-    }
-  };
-
-  const calculateTotalTransactions = (transactions) => {
-    return transactions
-      .reduce((total, transaction) => {
-        const amount =
-          typeof transaction.amount === "string"
-            ? parseInt(transaction.amount.replace(/,/g, ""))
-            : transaction.amount || 0;
-        return total + amount;
-      }, 0)
-      .toLocaleString("fa-IR");
-  };
-
-  const formatTransactionCount = (count) => {
-    return count.toLocaleString("fa-IR");
-  };
+  }, [loadUsers]);
 
   if (loading) {
     return (
-      <div className="container mx-auto px-4 py-8">
-        <div className="flex justify-center items-center h-64">
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50">
+        <div className="flex flex-col gap-4 justify-center items-center">
           <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-blue-500"></div>
+          در حال بارگذاری
         </div>
       </div>
     );
@@ -104,162 +39,57 @@ export default function Users() {
 
   if (error) {
     return (
-      <div className="container mx-auto px-4 py-8">
-        <div
-          className="bg-red-100 border border-red-400 text-red-700 px-12 py-3 rounded relative"
-          role="alert">
-          <strong className="font-bold  ">خطا! </strong>
-          <span className="block sm:inline">{error}</span>
-          <button
-            onClick={loadUsers}
-            className="absolute top-0 bottom-0 right-0 px-4 py-3">
-            <svg
-              className="fill-current h-6 w-6 me-3 text-red-500"
-              role="button"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20">
-              <title>تلاش مجدد</title>
-              <path d="M14.66 15.66A8 8 0 1 1 17 10h-2a6 6 0 1 0-1.76 4.24l1.42 1.42zM12 10h8l-4 4-4-4z" />
-            </svg>
-          </button>
-        </div>
+      <div className="text-center p-8">
+        <div className="text-red-500 mb-4">{error}</div>
+        <button
+          onClick={loadUsers}
+          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+          تلاش مجدد
+        </button>
       </div>
     );
   }
 
   return (
-    <div className="container mx-auto md:px-4 md:py-6  mt-10 md:mt-0">
-      <div className="bg-white  shadow-md shadow-gray-300 dark:shadow-neutral-600 rounded-lg overflow-x-scroll  ">
-        <table className="min-w-full divide-y divide-gray-200 dark:bg-brand-300  ">
-          <thead className="bg-gray-300 text-gray-900 dark:bg-brand-200 dark:text-white">
-            <tr>
-              <th className="px-6 py-3 text-right text-xs font-medium uppercase tracking-wider">
-                ID
-              </th>
-              <th className="px-6 py-3 text-right text-xs font-medium uppercase tracking-wider">
-                نام
-              </th>
-              <th className="px-6 py-3 text-right text-xs font-medium uppercase tracking-wider">
-                ایمیل
-              </th>
-              <th className="px-6 py-3 text-right text-xs font-medium uppercase tracking-wider">
-                وضعیت
-              </th>
-              <th className="px-6 py-3 text-right text-xs font-medium uppercase tracking-wider">
-                تعداد تراکنش‌ها
-              </th>
-              <th className="px-6 py-3 text-right text-xs font-medium uppercase tracking-wider">
-                جمع تراکنش‌ها
-              </th>
-              <th className="px-6 py-3 text-right text-xs font-medium uppercase tracking-wider">
-                عملیات
-              </th>
+    <div className="lg:container mt-10 md:mt-0 mx-auto p-4 ">
+      <div className="overflow-x-autorounded-xl md:overflow-x-scroll lg:overflow-x-clip">
+        <table className="min-w-full divide-y divide-gray-400 md:shadow-sm text-gray-800 md:border md:border-gray-100 dark:border-brand-900 rounded-xl">
+          <thead className="hidden md:table-header-group bg-gray-300  dark:bg-brand-200 ">
+            <tr className="flex flex-col md:table-row">
+              {[
+                "ID",
+                "نام کاربر",
+                "ایمیل",
+                "شغل",
+                "وضعیت",
+                "تعداد تراکنش",
+                "جمع تراکنش",
+                "عملیات",
+              ].map((item) => (
+                <th
+                  key={item}
+                  className="px-2 py-4 text-center text-xs font-bold dark:text-gray-400 uppercase tracking-wider">
+                  {item}
+                </th>
+              ))}
             </tr>
           </thead>
-          <tbody className="bg-white dark:bg-brand-300 dark:text-white divide-y divide-gray-200">
+          <tbody className="divide divide-gray-300/60">
             {users.map((user) => (
-              <tr key={user.id} className="hover:bg-gray-50 dark:hover:bg-brand-200">
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-white">
-                  {user.id}
-                </td>
-
-                {/* نام کاربر */}
-                <td className="px-6 py-4 whitespace-nowrap text-gray-800 dark:text-gray-300">
-                  {editingUser === user.id && editField === "name" ? (
-                    <div className="flex items-center gap-2">
-                      <input
-                        type="text"
-                        value={editValue}
-                        onChange={(e) => setEditValue(e.target.value)}
-                        className="border border-gray-300 rounded px-2 py-1 text-sm w-full"
-                        autoFocus
-                      />
-                      <button
-                        onClick={() => handleSaveEdit(user.id)}
-                        className="px-2 py-1 text-xs bg-green-500 text-white rounded hover:bg-green-600">
-                        ذخیره
-                      </button>
-                      <button
-                        onClick={handleCancelEdit}
-                        className="px-2 py-1 text-xs bg-gray-500 text-white rounded hover:bg-gray-600">
-                        لغو
-                      </button>
-                    </div>
-                  ) : (
-                    <span
-                      className="text-sm font-medium text-brand-800 dark:text-gray-300 hover:text-brand-500 hover:underline cursor-pointer"
-                      onClick={() =>
-                        handleEditClick(user.id, "name", user.name)
-                      }>
-                      {user.name}
-                    </span>
-                  )}
-                </td>
-
-                {/* ایمیل کاربر */}
-                <td className="px-6 py-4 whitespace-nowrap text-gray-800 dark:text-gray-300">
-                  {editingUser === user.id && editField === "email" ? (
-                    <div className="flex items-center gap-2">
-                      <input
-                        type="email"
-                        value={editValue}
-                        onChange={(e) => setEditValue(e.target.value)}
-                        className="border border-gray-300 rounded px-2 py-1 text-sm w-full"
-                        autoFocus
-                      />
-                      <button
-                        onClick={() => handleSaveEdit(user.id)}
-                        className="px-2 py-1 text-xs bg-green-500 text-white rounded hover:bg-green-600">
-                        ذخیره
-                      </button>
-                      <button
-                        onClick={handleCancelEdit}
-                        className="px-2 py-1 text-xs bg-gray-500 text-white rounded hover:bg-gray-600">
-                        لغو
-                      </button>
-                    </div>
-                  ) : (
-                    <span
-                      className="text-sm text-gray-600 dark:text-gray-300 hover:text-brand-500 hover:underline cursor-pointer"
-                      onClick={() =>
-                        handleEditClick(user.id, "email", user.email)
-                      }>
-                      {user.email}
-                    </span>
-                  )}
-                </td>
-
-                {/* وضعیت کاربر */}
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <span
-                    className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
-                      user.userStatus === "active"
-                        ? "bg-green-100 text-green-800"
-                        : "bg-red-100 text-red-800"
-                    }`}>
-                    {user.userStatus === "active" ? "فعال" : "غیرفعال"}
-                  </span>
-                </td>
-
-                {/* تعداد تراکنش‌ها */}
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-white">
-                  {formatTransactionCount(user.transactions?.length || 0)}
-                </td>
-
-                {/* جمع تراکنش‌ها */}
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-white">
-                  {calculateTotalTransactions(user.transactions || [])} تومان
-                </td>
-
-                {/* عملیات */}
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                  <button
-                    className="px-3 py-1 text-xs bg-red-400 text-white rounded hover:bg-red-500 transition-colors"
-                    onClick={() => handleDeleteUser(user.id)}>
-                    حذف
-                  </button>
-                </td>
-              </tr>
+              <UserRow
+                key={user.id}
+                user={user}
+                editingUser={editingUser}
+                editField={editField}
+                editValue={editValue}
+                onEditClick={handleEditClick}
+                onSaveEdit={handleSaveEdit}
+                onCancelEdit={handleCancelEdit}
+                onValueChange={setEditValue}
+                onDeleteUser={handleDeleteUser}
+                calculateTotalTransactions={calculateTotalTransactions}
+                formatTransactionCount={formatTransactionCount}
+              />
             ))}
           </tbody>
         </table>

@@ -1,4 +1,3 @@
-import React from "react";
 import {
   LineChart,
   Line,
@@ -34,11 +33,11 @@ const SimpleFinancialChart = () => {
         تحلیل مالی ماهانه
       </h3>
 
-      <div className="h-[350px] -mx-2">
+      <div className="h-[350px] text-xs md:text-lg">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart
             data={data}
-            margin={{ top: 5, right: 5, left: 0, bottom: 5 }} // left: 0
+            margin={{ top: 5, right: 6, left: -34, bottom: 5 }} // left: 0
           >
             <CartesianGrid
               strokeDasharray="3 3"
@@ -69,7 +68,7 @@ const SimpleFinancialChart = () => {
                 border: "1px solid #e5e7eb",
                 boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
                 backgroundColor: "var(--color-brand-50)",
-                color: "#6b7280",
+                color: "#9e9e9e",
               }}
               formatter={(value, name) => [
                 new Intl.NumberFormat("fa-IR").format(value) + " ریال",
@@ -86,7 +85,7 @@ const SimpleFinancialChart = () => {
               iconType="circle"
               iconSize={8}
               formatter={(value) => (
-                <span className= "text-gray-700 dark:text-brand-800 text-sm mr-1">
+                <span className= "text-gray-700 dark:text-brand-800  text-sm mt-3 mx-1">
                   {value === "cost"
                     ? "هزینه‌ها"
                     : value === "income"
@@ -129,7 +128,7 @@ const SimpleFinancialChart = () => {
         </ResponsiveContainer>
       </div>
 
-      <div className="mt-3 text-xs text-gray-400 dark:text-gray-400 text-center">
+      <div className="mt-1 text-xs text-gray-400 dark:text-gray-400 text-center">
         اعداد به ریال نمایش داده شده‌اند
       </div>
     </div>

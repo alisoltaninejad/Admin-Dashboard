@@ -1,4 +1,3 @@
-import React from 'react';
 import Icon from './../../components/Icons/Icons';
 
 export default function FinancialFeature({ lable, price, percentage }) {
