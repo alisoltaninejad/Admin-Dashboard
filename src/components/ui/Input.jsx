@@ -30,7 +30,6 @@ export default function Input(props) {
   }, [value]);
 
   const onChangeHandler = (event) => {
-    console.log(event.target.value);
     dispatch({
       type: "CHANGE",
       value: event.target.value,
@@ -47,7 +46,8 @@ export default function Input(props) {
           {props.required && <span className="text-red-700 px-1">*</span>}
         </label>
         <div
-          className={`flex items-center justify-between min-w-50 text-sm h-8 rounded-md px-2  bg-brand-200 dark:bg-brand-300 
+          className={`flex items-center justify-between min-w-50 text-sm h-8 rounded-md px-2   border border-brand-700
+            shadow-xs shadow-brand-600  bg-brand-200 dark:bg-brand-300 
         ${
           mainInput.isValid
             ? "border border-green-500 dark:border-green-500/50"
@@ -56,7 +56,7 @@ export default function Input(props) {
           <input
             type={props.type}
             placeholder={props.placeholder}
-            className={`flex-1  grow  ps-2 focus:outline-none ${props.className}`}
+            className={`flex-1  grow   ps-2 focus:outline-none ${props.className}`}
             value={mainInput.value}
             onChange={onChangeHandler}
           />
