@@ -22,6 +22,11 @@ function Select({
     }
   }, [controlledValue]);
 
+  // sync change value
+  useEffect(() => {
+    onChange?.("job", value, value.length > 0);
+  }, [value]);
+
   // close on outside click
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -36,7 +41,6 @@ function Select({
 
   const handleSelect = (newValue) => {
     setValue(newValue);
-    onChange?.("job", newValue, value.length > 0);
     setIsOpen(false);
   };
 
@@ -74,7 +78,7 @@ function Select({
           <span className={`${!value ? "opacity-50" : ""}`}>
             {selectedOption ? selectedOption.label : placeholder}
           </span>
-          
+
           {value.length ? (
             <Icon
               name="chevronDown"
